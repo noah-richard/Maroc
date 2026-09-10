@@ -1,0 +1,424 @@
+/* ==========================================================================
+   Advertising Zone & Carousel Styles
+   ========================================================================== */
+
+.advertising-zone-section {
+  padding: 4.5rem 1.5rem;
+  background: #f8fafc;
+}
+
+.advertising-zone-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.advertising-zone-heading {
+  margin-bottom: 2.25rem;
+}
+
+.zone-heading-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #c89345;
+  background: rgba(200, 147, 69, 0.1);
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  margin-bottom: 0.65rem;
+}
+
+.zone-heading-title {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 0.35rem 0;
+}
+
+.zone-heading-subtitle {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Grid */
+.advertising-zone-grid {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+/* Carousel Column */
+.advertising-carousel-col {
+  min-height: 420px;
+  display: flex;
+}
+
+.featured-ad-carousel {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
+  display: flex;
+  user-select: none;
+  cursor: grab;
+}
+
+.featured-ad-carousel.is-dragging {
+  cursor: grabbing;
+}
+
+.carousel-track-container {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.carousel-slide {
+  position: relative;
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.carousel-ad-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  user-select: none;
+  pointer-events: none;
+}
+
+.featured-ad-carousel:hover .carousel-ad-image {
+  transform: scale(1.03);
+}
+
+.carousel-ad-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.15) 0%,
+    rgba(15, 23, 42, 0.45) 45%,
+    rgba(15, 23, 42, 0.92) 100%
+  );
+  pointer-events: none;
+}
+
+.carousel-ad-content {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  padding: 2.25rem 2.5rem 3.5rem 2.5rem;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.carousel-ad-badge {
+  display: inline-block;
+  background: #c89345;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.carousel-ad-title {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-ad-description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #e2e8f0;
+  margin: 0;
+  max-width: 500px;
+}
+
+.carousel-ad-footer {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.carousel-ad-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.75rem 1.35rem;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-ad-cta:hover {
+  background: #c89345;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(200, 147, 69, 0.35);
+}
+
+.carousel-ad-sponsor {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+/* Carousel controls */
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+}
+
+.carousel-nav-btn:hover {
+  background: #c89345;
+  border-color: #c89345;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav-prev {
+  left: 1rem;
+}
+
+.carousel-nav-next {
+  right: 1rem;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 10;
+  padding: 6px 14px;
+  background: rgba(10, 18, 30, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.carousel-dot:hover {
+  background: #ffffff;
+}
+
+.carousel-dot.active {
+  width: 24px;
+  background: #c89345;
+  border-color: #c89345;
+  box-shadow: 0 2px 8px rgba(200, 147, 69, 0.5);
+}
+
+/* Static Column */
+.advertising-static-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.static-ad-card {
+  display: flex;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+  transition: all 0.25s ease;
+  flex: 1;
+}
+
+.static-ad-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.1);
+  border-color: rgba(200, 147, 69, 0.3);
+}
+
+.static-ad-image-wrap {
+  position: relative;
+  width: 140px;
+  min-height: 120px;
+  flex-shrink: 0;
+}
+
+.static-ad-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.static-ad-badge {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  background: rgba(15, 23, 42, 0.85);
+  color: #c89345;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(4px);
+}
+
+.static-ad-body {
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.static-ad-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.static-ad-title {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.static-ad-sponsor {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.static-ad-desc {
+  font-size: 0.82rem;
+  color: #64748b;
+  line-height: 1.4;
+  margin: 0 0 0.65rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.static-ad-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #c89345;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  align-self: flex-start;
+}
+
+.static-ad-link:hover {
+  color: #9f7028;
+  transform: translateX(3px);
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .advertising-zone-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .carousel-slide-stage {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 640px) {
+  .advertising-zone-section {
+    padding: 3rem 1rem;
+  }
+
+  .carousel-ad-title {
+    font-size: 1.35rem;
+  }
+
+  .carousel-ad-content {
+    padding: 1.5rem;
+  }
+
+  .static-ad-image-wrap {
+    width: 110px;
+  }
+
+  .static-ad-body {
+    padding: 0.75rem 0.9rem;
+  }
+}

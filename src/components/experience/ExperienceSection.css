@@ -1,0 +1,191 @@
+/* =========================================
+   EXPERIENCE & TRUST SECTION STYLES
+   ========================================= */
+.experience-section {
+  position: relative;
+  padding: var(--space-16) 0 var(--space-20) 0;
+  background-color: var(--color-bg-body);
+  border-top: 1px solid var(--color-border-subtle);
+  overflow: hidden;
+}
+
+.experience-section__container {
+  width: 100%;
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
+}
+
+/* LEFT COLUMN */
+.experience-section__left {
+  flex: 1;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.experience-section__left.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.experience-section__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.85rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  color: var(--color-secondary);
+  line-height: 1.2;
+}
+
+.experience-section__title .highlight {
+  color: var(--color-primary);
+}
+
+.experience-section__subtitle {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.experience-section__cta-wrap {
+  margin-top: var(--space-2);
+}
+
+.experience-section__btn {
+  background-color: var(--color-secondary);
+  color: #FFFFFF;
+  padding: 0.85rem 1.85rem !important;
+}
+
+/* RIGHT COLUMN */
+.experience-section__right {
+  flex: 1.2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+  will-change: opacity, transform;
+}
+
+.experience-section__right.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* STATS GRID */
+.experience-section__stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 2vw, 32px);
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.stat-counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stat-counter:hover {
+  transform: translateY(-4px);
+}
+
+.stat-counter:hover .stat-counter__icon {
+  color: var(--color-primary);
+  transform: scale(1.15) rotate(5deg);
+}
+
+.stat-counter__icon {
+  color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stat-counter__data {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-counter__value {
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+}
+
+.stat-counter__label {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* WATERMARK STAMP */
+.experience-section__stamp-wrap {
+  flex-shrink: 0;
+  margin-left: var(--space-6);
+  position: relative;
+  z-index: 1;
+}
+
+.experience-section__stamp {
+  width: 170px;
+  height: 170px;
+  opacity: 0.85;
+  transition: transform 0.6s var(--ease-out-quint);
+}
+
+.experience-section__stamp:hover {
+  transform: scale(1.05) rotate(15deg);
+}
+
+/* =========================================
+   RESPONSIVE RECOMPOSITION (Experience)
+   ========================================= */
+@media (max-width: 1024px) {
+  .experience-section__container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-10);
+  }
+
+  .experience-section__right {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 768px) {
+  .experience-section__stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+
+  .experience-section__stamp-wrap {
+    display: none;
+  }
+}

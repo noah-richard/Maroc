@@ -1,0 +1,119 @@
+:root {
+  /* =========================================
+     COLOR TOKENS (Design System DecouvreLeMaroc)
+     ========================================= */
+  /* Brand / Terracotta & Warm Coral */
+  --color-primary: #C8503D;
+  --color-primary-hover: #B54231;
+  --color-primary-active: #9F3526;
+  --color-primary-light: #FDF3F1;
+  --color-primary-glow: rgba(200, 80, 61, 0.25);
+
+  /* Brand / Deep Atlantic Slate Navy */
+  --color-secondary: #0F2937;
+  --color-secondary-hover: #193E52;
+  --color-secondary-light: #F0F4F8;
+
+  /* Accent Gold / Warm Sand */
+  --color-accent-gold: #D4A373;
+  --color-accent-gold-light: #F7EFE6;
+  --color-accent-gold-hover: #C5915F;
+
+  /* Backgrounds & Surfaces */
+  --color-bg-body: #FAFAF8;
+  --color-surface-card: #FFFFFF;
+  --color-surface-translucent: rgba(255, 255, 255, 0.95);
+  --color-surface-dark: #0A1C26;
+  --color-surface-subtle: #F4F5F7;
+
+  /* Text Colors */
+  --color-text-primary: #121826;
+  --color-text-secondary: #5B6577;
+  --color-text-muted: #8C96A6;
+  --color-text-light: #CED4DE;
+  --color-text-inverse: #FFFFFF;
+  --color-text-brand: #C8503D;
+
+  /* Borders */
+  --color-border-subtle: #E8ECEF;
+  --color-border-medium: #D1D8DF;
+  --color-border-focus: #C8503D;
+
+  /* System States */
+  --color-success: #1E8E5A;
+  --color-warning: #E89E23;
+  --color-error: #D9383A;
+
+  /* =========================================
+     TYPOGRAPHY TOKENS
+     ========================================= */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-script: 'Alex Brush', 'Caveat', cursive;
+
+  /* Type Scale */
+  --font-size-xs: 0.75rem;     /* 12px */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-md: 1.125rem;    /* 18px */
+  --font-size-lg: 1.25rem;     /* 20px */
+  --font-size-xl: 1.5rem;      /* 24px */
+  --font-size-2xl: 1.875rem;   /* 30px */
+  --font-size-3xl: 2.25rem;    /* 36px */
+  --font-size-4xl: 3rem;       /* 48px */
+  --font-size-5xl: 3.75rem;    /* 60px */
+
+  /* =========================================
+     SPACING & LAYOUT TOKENS (8pt Base Grid)
+     ========================================= */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+
+  --container-max-width: 1240px;
+  --container-padding: clamp(1rem, 4vw, 2rem);
+
+  /* =========================================
+     BORDER RADIUS TOKENS
+     ========================================= */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-pill: 9999px;
+
+  /* =========================================
+     ELEVATION / SHADOW TOKENS
+     ========================================= */
+  --shadow-subtle: 0 2px 8px rgba(15, 41, 55, 0.04);
+  --shadow-card: 0 8px 24px -6px rgba(15, 41, 55, 0.08);
+  --shadow-card-hover: 0 16px 36px -8px rgba(15, 41, 55, 0.16);
+  --shadow-floating: 0 20px 45px -12px rgba(15, 41, 55, 0.2);
+  --shadow-cta: 0 8px 20px -4px rgba(200, 80, 61, 0.38);
+
+  /* =========================================
+     MOTION & TRANSITIONS
+     ========================================= */
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-fast: 150ms var(--ease-out-quint);
+  --transition-normal: 250ms var(--ease-out-quint);
+  --transition-smooth: 400ms var(--ease-out-quint);
+
+  /* Z-Index Hierarchy */
+  --z-base: 1;
+  --z-card: 10;
+  --z-search: 30;
+  --z-navbar: 50;
+  --z-modal: 100;
+}
