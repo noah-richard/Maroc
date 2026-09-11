@@ -1,20 +1,45 @@
+/* =========================================
+   NAVBAR COMPONENT STYLES
+   Support du variant minimaliste PO (Accueil)
+   et du mode standard (Pages internes)
+   ========================================= */
+
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: var(--z-navbar);
-  background-color: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(232, 236, 239, 0.7);
-  transition: all var(--transition-normal);
-  height: 76px;
+  z-index: 100;
+  height: 78px;
   display: flex;
   align-items: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.navbar--scrolled {
+/* 01. MINIMAL VARIANT (FOR NEW HOME HERO) */
+.navbar--minimal {
+  background: linear-gradient(180deg, rgba(6, 17, 25, 0.75) 0%, rgba(6, 17, 25, 0.35) 60%, transparent 100%);
+  border-bottom: 1px solid transparent;
+}
+
+.navbar--minimal.navbar--scrolled {
+  background: rgba(7, 20, 29, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  height: 68px;
+}
+
+/* 02. DEFAULT VARIANT (FOR INTERNAL PAGES) */
+.navbar--default {
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(232, 236, 239, 0.8);
+}
+
+.navbar--default.navbar--scrolled {
   background-color: rgba(255, 255, 255, 0.98);
   box-shadow: 0 4px 20px rgba(15, 41, 55, 0.08);
   height: 68px;
@@ -22,232 +47,297 @@
 
 .navbar__container {
   width: 100%;
-  max-width: var(--container-max-width);
+  max-width: 1480px;
   margin: 0 auto;
-  padding: 0 var(--container-padding);
+  padding: 0 clamp(20px, 3.5vw, 48px);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* LOGO */
+/* 03. BRAND & LOGO */
 .navbar__brand {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: 12px;
   text-decoration: none;
 }
 
 .navbar__logo-icon {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   flex-shrink: 0;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
 }
 
 .navbar__brand:hover .navbar__logo-icon {
-  transform: scale(1.08) rotate(-4deg);
+  transform: scale(1.05);
 }
 
 .navbar__brand-text {
   display: flex;
   flex-direction: column;
+  gap: 2px;
 }
 
 .navbar__brand-name {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: clamp(1.15rem, 1.4vw, 1.35rem);
   font-weight: 700;
-  color: var(--color-secondary);
+  color: #FFFFFF;
   line-height: 1.1;
-  letter-spacing: -0.2px;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.navbar--default .navbar__brand-name {
+  color: var(--color-secondary);
+  text-shadow: none;
 }
 
 .navbar__brand-tagline {
   font-family: var(--font-sans);
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 
-/* NAV LINKS */
-.navbar__nav {
+.navbar--default .navbar__brand-tagline {
+  color: var(--color-text-secondary);
+  text-shadow: none;
+}
+
+/* 04. MINIMAL RIGHT NAV (PO MOCKUP FIDELITY) */
+.navbar__minimal-right {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2vw, 28px);
+}
+
+.navbar__minimal-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.2vw, 32px);
+}
+
+.navbar__minimal-link {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.navbar__minimal-link:hover {
+  color: #E5B27E;
+  text-shadow: 0 0 10px rgba(229, 178, 126, 0.4);
+}
+
+.navbar__minimal-link--partner {
+  font-weight: 600;
+}
+
+.navbar__minimal-sep {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.95rem;
+  font-weight: 300;
+}
+
+/* LANGUAGE SELECTOR */
+.navbar__lang-btn--minimal {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.navbar__lang-btn--minimal:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #E5B27E;
+}
+
+.navbar__flag {
+  font-size: 1.1rem;
+}
+
+/* LOGIN PILL (PO MOCKUP: Pill outline with user icon) */
+.navbar__login-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.navbar--default .navbar__login-pill {
+  color: var(--color-secondary);
+  border-color: var(--color-border-medium);
+  background: transparent;
+  text-shadow: none;
+}
+
+.navbar__login-pill:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.navbar__login-pill-icon {
   display: flex;
   align-items: center;
 }
 
+/* HAMBURGER BUTTON */
+.navbar__hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.navbar--default .navbar__hamburger {
+  color: var(--color-secondary);
+}
+
+/* 05. FULL NAVIGATION (Internal Pages) */
 .navbar__nav-list {
   display: flex;
   align-items: center;
-  gap: clamp(1rem, 2vw, 1.75rem);
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .navbar__nav-link {
   font-family: var(--font-sans);
-  font-size: var(--font-size-sm);
-  font-weight: 500;
+  font-size: 0.92rem;
+  font-weight: 600;
   color: var(--color-text-secondary);
-  transition: color var(--transition-fast);
-  position: relative;
-  padding: var(--space-2) 0;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .navbar__nav-link:hover {
   color: var(--color-primary);
 }
 
-.navbar__nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  right: 50%;
-  height: 2px;
-  background-color: var(--color-primary);
-  border-radius: 2px;
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  opacity: 0;
-}
-
-.navbar__nav-link:hover::after {
-  left: 0;
-  right: 0;
-  opacity: 1;
-}
-
-/* ACTIONS */
 .navbar__actions {
   display: flex;
   align-items: center;
-  gap: clamp(0.5rem, 1.2vw, 1rem);
+  gap: 16px;
 }
 
-.navbar__lang-btn {
-  display: flex;
-  align-items: center;
-  gap: var(--space-1);
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  color: var(--color-text-secondary);
-  padding: var(--space-2);
-  border-radius: var(--radius-sm);
-  transition: color var(--transition-fast);
-}
-
-.navbar__lang-btn:hover {
-  color: var(--color-primary);
-}
-
-.navbar__login-btn {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  color: var(--color-secondary);
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-pill);
-  transition: all var(--transition-fast);
-}
-
-.navbar__login-btn:hover {
-  color: var(--color-primary);
-}
-
-.navbar__hamburger {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  color: var(--color-secondary);
-  border-radius: var(--radius-sm);
-}
-
-/* MOBILE DRAWER */
+/* 06. MOBILE DRAWER */
 .navbar__mobile-drawer {
   position: fixed;
-  top: 76px;
+  top: 68px;
   left: 0;
   right: 0;
-  background-color: #FFFFFF;
-  border-bottom: 1px solid var(--color-border-subtle);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-  padding: var(--space-6) var(--container-padding);
-  animation: slideDown 0.25s ease-out;
+  background: #0B1D28;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  animation: navSlideDown 0.25s ease-out;
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes navSlideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .navbar__mobile-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: 16px;
 }
 
 .navbar__mobile-list a {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  font-size: var(--font-size-md);
+  gap: 12px;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 1.05rem;
   font-weight: 600;
-  color: var(--color-secondary);
-  padding: var(--space-2) 0;
 }
 
 .navbar__mobile-divider {
   height: 1px;
-  background-color: var(--color-border-subtle);
-  margin: var(--space-4) 0;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 20px 0;
 }
 
-.navbar__mobile-auth {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-
-.navbar__mobile-login-btn {
+.navbar__mobile-auth .navbar__mobile-login-btn {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
-  font-size: var(--font-size-base);
+  gap: 8px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  color: #FFFFFF;
   font-weight: 600;
-  color: var(--color-secondary);
-  padding: var(--space-3);
+  cursor: pointer;
 }
 
-.navbar__mobile-register-btn {
-  width: 100%;
-}
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  .navbar__minimal-nav,
+  .navbar__minimal-sep,
+  .navbar__lang-wrapper {
+    display: none;
+  }
 
-/* RESPONSIVE BREAKPOINTS */
-@media (max-width: 992px) {
-  .navbar__nav {
-    display: none;
-  }
-  .navbar__login-btn {
-    display: none;
-  }
   .navbar__hamburger {
     display: flex;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 520px) {
   .navbar__brand-tagline {
     display: none;
+  }
+
+  .navbar__login-pill span {
+    display: none;
+  }
+
+  .navbar__login-pill {
+    padding: 8px 10px;
   }
 }

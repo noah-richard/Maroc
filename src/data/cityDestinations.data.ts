@@ -1459,6 +1459,48 @@ CITY_DESTINATIONS_DATA['essaouira'] = {
   heroImageUrl: 'https://images.unsplash.com/photo-1569383746724-6f1b882b8f46?auto=format&fit=crop&w=1920&q=85'
 };
 
+CITY_DESTINATIONS_DATA['agadir'] = {
+  ...CITY_DESTINATIONS_DATA['casablanca'],
+  id: 'dest-agadir',
+  slug: 'agadir',
+  name: 'Agadir',
+  heroBadge: 'Perle du Souss & Baie Dorée',
+  heroDescription: 'Plages ensoleillées 300 jours par an, marina animée et douceur de vivre le long de l’Atlantique.',
+  quickInfo: {
+    climate: '300 jours de soleil par an',
+    mustSee: 'Kasbah Agadir Oufella, Marina, Promenade de la plage, Souk El Had',
+    location: 'Sur la côte Atlantique sud'
+  }
+};
+
+CITY_DESTINATIONS_DATA['meknes'] = {
+  ...CITY_DESTINATIONS_DATA['fes'],
+  id: 'dest-meknes',
+  slug: 'meknes',
+  name: 'Meknès',
+  heroBadge: 'Cité Impériale & Trésor Ismaélien',
+  heroDescription: 'Portes monumentales impériales, écuries royales historiques et splendeur d’une capitale millénaire.',
+  quickInfo: {
+    climate: 'Climat méditerranéen tempéré',
+    mustSee: 'Bab Mansour, Bassin de l’Agdal, Mausolée Moulay Ismaïl, Volubilis',
+    location: 'Région Fès-Meknès'
+  }
+};
+
+CITY_DESTINATIONS_DATA['ouarzazate'] = {
+  ...CITY_DESTINATIONS_DATA['marrakech'],
+  id: 'dest-ouarzazate',
+  slug: 'ouarzazate',
+  name: 'Ouarzazate',
+  heroBadge: 'Porte du Désert & Cité du Cinéma',
+  heroDescription: 'Kasbahs magistrales en terre cuite, oasis secrètes de palmiers et studios de cinéma légendaires.',
+  quickInfo: {
+    climate: 'Climat pré-saharien ensoleillé',
+    mustSee: 'Kasbah de Taourirt, Ksar d’Aït-ben-Haddou, Studios Atlas, Oasis de Fint',
+    location: 'Aux portes du Grand Sud marocain'
+  }
+};
+
 /**
  * Récupère une destination par son slug canonique normalisé
  */

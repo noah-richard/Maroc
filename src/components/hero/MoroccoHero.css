@@ -1,0 +1,395 @@
+/* =========================================
+   MOROCCO HERO COMPONENT STYLES
+   Fidélité stricte à la maquette PO (DecouvreLeMaroc) :
+   - Immersion cinématographique 100vh
+   - Diagonale lumineuse Océan (côte) / Atlas (intérieur)
+   - Typographie magazine de voyage (Serif + Cursive + Sans)
+   - Cartes photographiques 2x2 interactives
+   ========================================= */
+
+.morocco-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  background-color: #07151e;
+  padding-top: clamp(80px, 11vh, 110px);
+  padding-bottom: clamp(30px, 4vh, 50px);
+}
+
+/* 01. DUAL SPLIT BACKGROUND PANELS */
+.morocco-hero__backgrounds {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.morocco-hero__bg-panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform 0.8s ease-out;
+  will-change: transform;
+}
+
+/* LEFT PANEL: OCÉAN */
+.morocco-hero__bg-panel--coastal {
+  left: 0;
+  width: 100%;
+  background-position: left 30%;
+  clip-path: polygon(0 0, 53.5% 0, 42.5% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 0, 53.5% 0, 42.5% 100%, 0 100%);
+}
+
+/* RIGHT PANEL: ATLAS */
+.morocco-hero__bg-panel--atlas {
+  right: 0;
+  width: 100%;
+  background-position: right 30%;
+  clip-path: polygon(53.5% 0, 100% 0, 100% 100%, 42.5% 100%);
+  -webkit-clip-path: polygon(53.5% 0, 100% 0, 100% 100%, 42.5% 100%);
+}
+
+/* LUMINOUS DIAGONAL GOLDEN DIVIDER BEAM */
+.morocco-hero__diagonal-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background: linear-gradient(
+    108deg,
+    transparent 47.8%,
+    rgba(255, 240, 200, 0.15) 48.5%,
+    rgba(229, 178, 126, 0.85) 49.0%,
+    rgba(255, 255, 255, 0.95) 49.3%,
+    rgba(229, 178, 126, 0.85) 49.6%,
+    rgba(255, 240, 200, 0.15) 50.1%,
+    transparent 50.8%
+  );
+  filter: drop-shadow(0 0 12px rgba(229, 178, 126, 0.6));
+}
+
+/* CINEMATIC ATMOSPHERIC LIGHTING OVERLAYS */
+.morocco-hero__vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background:
+    /* Top header dimming */
+    linear-gradient(180deg, rgba(6, 17, 25, 0.68) 0%, rgba(6, 17, 25, 0.2) 20%, transparent 40%),
+    /* Central soft radial halo */
+    radial-gradient(ellipse 70% 50% at 50% 35%, rgba(6, 17, 25, 0.72) 0%, rgba(6, 17, 25, 0.35) 40%, transparent 75%),
+    /* Bottom grounding gradient */
+    linear-gradient(0deg, rgba(6, 17, 25, 0.82) 0%, rgba(6, 17, 25, 0.3) 25%, transparent 60%);
+}
+
+/* 02. HERO CONTENT CONTAINER */
+.morocco-hero__content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 3.5vw, 48px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+/* 03. TOP CENTRAL EDITORIAL HEADLINE */
+.morocco-hero__center-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: clamp(20px, 3.5vh, 40px);
+}
+
+.morocco-hero__micro-signature {
+  font-family: var(--font-sans);
+  font-size: clamp(0.72rem, 0.88vw, 0.85rem);
+  font-weight: 700;
+  color: #E5B27E;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.morocco-hero__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.7rem, 5.2vw, 4.4rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+  text-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.85),
+    0 1px 4px rgba(0, 0, 0, 0.95);
+  margin: 0;
+}
+
+.morocco-hero__subtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.45vw, 1.35rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.94);
+  margin-top: 8px;
+  margin-bottom: 12px;
+  letter-spacing: 0.3px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+}
+
+/* MOROCCAN EMBLEM STAR */
+.morocco-hero__emblem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 260px;
+  margin-top: 2px;
+}
+
+.morocco-hero__emblem-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 163, 115, 0.65) 50%,
+    rgba(212, 163, 115, 0.85) 100%
+  );
+}
+
+.morocco-hero__emblem-line:last-child {
+  background: linear-gradient(
+    90deg,
+    rgba(212, 163, 115, 0.85) 0%,
+    rgba(212, 163, 115, 0.65) 50%,
+    transparent 100%
+  );
+}
+
+.morocco-hero__emblem-star {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 0 6px rgba(212, 163, 115, 0.5));
+}
+
+/* 04. SPLIT GRID (OCÉAN VS ATLAS) */
+.morocco-hero__split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 8vw, 130px);
+  align-items: end;
+  width: 100%;
+  margin-top: auto;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.morocco-hero__universe {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Left Alignment for Ocean */
+.morocco-hero__universe--ocean {
+  align-items: flex-start;
+  padding-right: clamp(10px, 2vw, 30px);
+}
+
+/* Right Alignment for Atlas */
+.morocco-hero__universe--atlas {
+  align-items: flex-start;
+  padding-left: clamp(10px, 2vw, 30px);
+}
+
+/* POETIC SCRIPTS */
+.morocco-hero__quote {
+  font-family: var(--font-script);
+  font-size: clamp(1.8rem, 2.4vw, 2.5rem);
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 1.15;
+  margin: 0 0 14px 0;
+  text-shadow:
+    0 3px 14px rgba(0, 0, 0, 0.9),
+    0 1px 3px rgba(0, 0, 0, 0.95);
+  max-width: 440px;
+}
+
+.morocco-hero__universe--ocean .morocco-hero__quote {
+  transform: rotate(-1.5deg);
+}
+
+.morocco-hero__universe--atlas .morocco-hero__quote {
+  transform: rotate(-1deg);
+}
+
+/* CATEGORY TAG */
+.morocco-hero__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.morocco-hero__tag-icon {
+  width: 20px;
+  height: 20px;
+  color: #E5B27E;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7));
+}
+
+/* 2x2 CITIES GRID */
+.morocco-hero__cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  width: 100%;
+  max-width: 480px;
+}
+
+/* POETIC SIGNATURE (BOTTOM RIGHT) */
+.morocco-hero__signature {
+  position: absolute;
+  right: -10px;
+  bottom: -36px;
+  font-family: var(--font-script);
+  font-size: clamp(2.2rem, 3.2vw, 3rem);
+  color: #E5B27E;
+  transform: rotate(-5deg);
+  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.95);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* =========================================
+   RESPONSIVE LAYOUT (Tablet & Mobile)
+   ========================================= */
+
+@media (max-width: 1100px) {
+  .morocco-hero__split-grid {
+    gap: 36px;
+  }
+
+  .morocco-hero__cards-grid {
+    max-width: 100%;
+    gap: 10px;
+  }
+
+  .morocco-hero__signature {
+    bottom: -28px;
+    font-size: 2.2rem;
+  }
+}
+
+/* TABLET & MOBILE RECOMPOSITION */
+@media (max-width: 860px) {
+  .morocco-hero {
+    min-height: auto;
+    padding-top: 90px;
+    padding-bottom: 40px;
+  }
+
+  /* Adaptive Diagonal to Horizontal Separation */
+  .morocco-hero__bg-panel--coastal {
+    width: 100%;
+    height: 52%;
+    top: 0;
+    bottom: auto;
+    clip-path: none;
+    -webkit-clip-path: none;
+  }
+
+  .morocco-hero__bg-panel--atlas {
+    width: 100%;
+    height: 52%;
+    top: auto;
+    bottom: 0;
+    clip-path: none;
+    -webkit-clip-path: none;
+  }
+
+  .morocco-hero__diagonal-glow {
+    top: 48%;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(229, 178, 126, 0.8) 50%,
+      transparent 100%
+    );
+  }
+
+  .morocco-hero__split-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: stretch;
+  }
+
+  .morocco-hero__universe--ocean,
+  .morocco-hero__universe--atlas {
+    padding: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .morocco-hero__quote {
+    text-align: center;
+  }
+
+  .morocco-hero__cards-grid {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .morocco-hero__signature {
+    position: static;
+    transform: rotate(-3deg);
+    margin-top: 24px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .morocco-hero {
+    padding-top: 80px;
+  }
+
+  .morocco-hero__title {
+    font-size: 2.35rem;
+  }
+
+  .morocco-hero__subtitle {
+    font-size: 0.98rem;
+  }
+
+  .morocco-hero__cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+}

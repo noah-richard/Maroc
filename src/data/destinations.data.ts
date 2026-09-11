@@ -1,4 +1,95 @@
 import type { Destination } from '../types/destination';
+import rabatImg from '../assets/cities/rabat.jpg';
+import casablancaImg from '../assets/cities/casablanca.jpg';
+import agadirImg from '../assets/cities/agadir.jpg';
+import tangerImg from '../assets/cities/tanger.jpg';
+import marrakechImg from '../assets/cities/marrakech.jpg';
+import fesImg from '../assets/cities/fes.jpg';
+import meknesImg from '../assets/cities/meknes.jpg';
+import ouarzazateImg from '../assets/cities/ouarzazate.jpg';
+
+export interface HomeDestination {
+  id: string;
+  name: string;
+  slug: string;
+  region: 'coastal' | 'inland';
+  image: string;
+  altText: string;
+  description?: string;
+}
+
+export const COASTAL_DESTINATIONS: HomeDestination[] = [
+  {
+    id: 'dest-rabat',
+    name: 'Rabat',
+    slug: 'rabat',
+    region: 'coastal',
+    image: rabatImg,
+    altText: 'Kasbah des Oudayas et Tour Hassan à Rabat'
+  },
+  {
+    id: 'dest-casablanca',
+    name: 'Casablanca',
+    slug: 'casablanca',
+    region: 'coastal',
+    image: casablancaImg,
+    altText: 'Mosquée Hassan II au bord de l’océan à Casablanca'
+  },
+  {
+    id: 'dest-agadir',
+    name: 'Agadir',
+    slug: 'agadir',
+    region: 'coastal',
+    image: agadirImg,
+    altText: 'Grande baie et plage dorée d’Agadir'
+  },
+  {
+    id: 'dest-tanger',
+    name: 'Tanger',
+    slug: 'tanger',
+    region: 'coastal',
+    image: tangerImg,
+    altText: 'Médina blanche et falaise dominant la mer à Tanger'
+  }
+];
+
+export const INLAND_DESTINATIONS: HomeDestination[] = [
+  {
+    id: 'dest-marrakech',
+    name: 'Marrakech',
+    slug: 'marrakech',
+    region: 'inland',
+    image: marrakechImg,
+    altText: 'Koutoubia et palmiers au coucher de soleil à Marrakech'
+  },
+  {
+    id: 'dest-fes',
+    name: 'Fès',
+    slug: 'fes',
+    region: 'inland',
+    image: fesImg,
+    altText: 'Porte Bab Bou Jeloud et médina de Fès'
+  },
+  {
+    id: 'dest-meknes',
+    name: 'Meknès',
+    slug: 'meknes',
+    region: 'inland',
+    image: meknesImg,
+    altText: 'Porte monumentale Bab Mansour à Meknès'
+  },
+  {
+    id: 'dest-ouarzazate',
+    name: 'Ouarzazate',
+    slug: 'ouarzazate',
+    region: 'inland',
+    image: ouarzazateImg,
+    altText: 'Kasbah fortifiée en terre et palmeraie à Ouarzazate'
+  }
+];
+
+// Compatibility alias for mountain destinations
+export const MOUNTAIN_DESTINATIONS = INLAND_DESTINATIONS;
 
 export const POPULAR_DESTINATIONS: Destination[] = [
   {
@@ -6,7 +97,7 @@ export const POPULAR_DESTINATIONS: Destination[] = [
     slug: 'marrakech',
     name: 'Marrakech',
     subtitle: 'La ville ocre et ses merveilles',
-    imageUrl: 'https://images.unsplash.com/photo-1597212618440-806262de4f6b?auto=format&fit=crop&w=800&q=80',
+    imageUrl: marrakechImg,
     region: 'interior',
     altText: 'Minaret de la Koutoubia et palmiers au coucher de soleil à Marrakech'
   },
@@ -15,7 +106,7 @@ export const POPULAR_DESTINATIONS: Destination[] = [
     slug: 'casablanca',
     name: 'Casablanca',
     subtitle: 'Modernité et art de vivre',
-    imageUrl: 'https://images.unsplash.com/photo-1577147443647-81856d5151af?auto=format&fit=crop&w=800&q=80',
+    imageUrl: casablancaImg,
     region: 'coast',
     altText: 'Majestueuse Mosquée Hassan II au bord de l’océan Atlantique à Casablanca'
   },
@@ -24,7 +115,7 @@ export const POPULAR_DESTINATIONS: Destination[] = [
     slug: 'rabat',
     name: 'Rabat',
     subtitle: 'Histoire et élégance',
-    imageUrl: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=800&q=80',
+    imageUrl: rabatImg,
     region: 'coast',
     altText: 'Tour Hassan et colonnes historiques en pierre ocre à Rabat'
   },
@@ -33,7 +124,7 @@ export const POPULAR_DESTINATIONS: Destination[] = [
     slug: 'fes',
     name: 'Fès',
     subtitle: 'La médina authentique',
-    imageUrl: 'https://images.unsplash.com/photo-1587974928442-77dc3e0dba72?auto=format&fit=crop&w=800&q=80',
+    imageUrl: fesImg,
     region: 'interior',
     altText: 'Porte Bab Bou Jeloud et ruelles chargées d’histoire de la médina de Fès'
   },
@@ -42,23 +133,8 @@ export const POPULAR_DESTINATIONS: Destination[] = [
     slug: 'tanger',
     name: 'Tanger',
     subtitle: 'Entre deux continents',
-    imageUrl: 'https://images.unsplash.com/photo-1569383746724-6f1b882b8f46?auto=format&fit=crop&w=800&q=80',
+    imageUrl: tangerImg,
     region: 'coast',
     altText: 'Médina blanche de Tanger dominant la baie et le détroit de Gibraltar'
   }
-];
-
-export const COASTAL_DESTINATIONS = [
-  { name: 'Rabat', slug: 'rabat' },
-  { name: 'Casablanca', slug: 'casablanca' },
-  { name: 'Agadir', slug: 'agadir' },
-  { name: 'Tanger', slug: 'tanger' }
-];
-
-export const MOUNTAIN_DESTINATIONS = [
-  { name: 'Marrakech', slug: 'marrakech' },
-  { name: 'Fès', slug: 'fes' },
-  { name: 'Meknès', slug: 'meknes' },
-  { name: 'Ouarzazate', slug: 'ouarzazate' },
-  { name: 'Essaouira', slug: 'essaouira' }
 ];

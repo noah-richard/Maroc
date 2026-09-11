@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar/Navbar';
-import { Hero } from '../components/hero/Hero';
-import { PopularDestinations } from '../components/destinations/PopularDestinations';
-import { ServicesSection } from '../components/services/ServicesSection';
-import { ExperienceSection } from '../components/experience/ExperienceSection';
+import { MoroccoHero } from '../components/hero/MoroccoHero';
+import { PartnersSection } from '../components/partners/PartnersSection';
 import { Footer } from '../components/layout/Footer/Footer';
 import { AuthModal } from '../components/common/AuthModal/AuthModal';
-import type { Destination } from '../types/destination';
-import type { ServiceOffering } from '../types/service';
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
@@ -20,69 +16,37 @@ export const HomePage: React.FC = () => {
     setAuthModalOpen(true);
   };
 
-  const handleSelectDestination = (destination: Destination | string) => {
-    if (typeof destination === 'string') {
-      const slug = destination
+  const handleSelectDestination = (slug: string) => {
+    if (slug) {
+      const cleanSlug = slug
         .trim()
         .toLowerCase()
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '');
-      navigate(`/destinations/${slug}`);
-    } else if (destination && destination.slug) {
-      navigate(`/destinations/${destination.slug}`);
-    }
-  };
-
-  const handleSelectService = (_service: ServiceOffering) => {
-    const searchEngine = document.getElementById('moteur-recherche');
-    if (searchEngine) {
-      searchEngine.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  };
-
-  const handleStartAdventure = () => {
-    const searchEngine = document.getElementById('moteur-recherche');
-    if (searchEngine) {
-      searchEngine.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      navigate(`/destinations/${cleanSlug}`);
     }
   };
 
   return (
-    <div className="home-page">
-      {/* 01. NAVIGATION HEADER */}
-      <Navbar onOpenAuth={handleOpenAuth} />
+    <div className="home-page home-page--editorial">
+      {/* 01. MINIMAL IMMERSIVE HEADER */}
+      <Navbar variant="minimal" onOpenAuth={handleOpenAuth} />
 
-      {/* 02. MAIN LANDING CONTENT */}
+      {/* 02. MAIN EDITORIAL CONTENT */}
       <main id="main-content">
-        {/* HERO WITH MER / MONTAGNE SPLIT & SEARCH ENGINE */}
-        <Hero onSelectDestination={handleSelectDestination} />
+        {/* CINEMATIC HERO: OCÉAN VS ATLAS WITH DIAGONAL SPLIT */}
+        <MoroccoHero onSelectDestination={handleSelectDestination} />
 
-        {/* POPULAR DESTINATIONS SECTION */}
-        <PopularDestinations
-          onSelectDestination={handleSelectDestination}
-          onViewAll={() => {
-            const el = document.getElementById('destinations');
-            el?.scrollIntoView({ behavior: 'smooth' });
-          }}
-        />
-
-        {/* SERVICES SECTION */}
-        <ServicesSection
-          onSelectService={handleSelectService}
-          onViewAll={() => {
-            const el = document.getElementById('services');
-            el?.scrollIntoView({ behavior: 'smooth' });
-          }}
-        />
-
-        {/* EXPERIENCE & REASSURANCE SECTION */}
-        <ExperienceSection onStartAdventure={handleStartAdventure} />
+        {/* REFINED PARTNERS SECTION ON IVORY BACKGROUND */}
+        <div id="partenaires">
+          <PartnersSection />
+        </div>
       </main>
 
       {/* 03. FOOTER */}
       <Footer />
 
-      {/* 04. AUTHENTICATION DIALOG MODAL */}
+      {/* 04. AUTHENTICATION MODAL */}
       <AuthModal
         isOpen={authModalOpen}
         initialMode={authMode}
@@ -91,3 +55,5 @@ export const HomePage: React.FC = () => {
     </div>
   );
 };
+
+export default HomePage;
