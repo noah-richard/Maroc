@@ -8,6 +8,8 @@ import {
 import heroCoastalBg from '../../assets/hero-coastal.jpg';
 import heroAtlasBg from '../../assets/hero-atlas.jpg';
 import './MoroccoHero.css';
+import './MoroccoHeroSplit.css';
+import './MoroccoHeroResponsive.css';
 
 interface MoroccoHeroProps {
   onSelectDestination?: (slug: string) => void;
@@ -15,7 +17,7 @@ interface MoroccoHeroProps {
 
 export const MoroccoHero: React.FC<MoroccoHeroProps> = ({ onSelectDestination }) => {
   return (
-    <section className="morocco-hero" aria-label="Découvrez le Maroc — Immersion et Destinations">
+    <section className="morocco-hero" aria-label="Découvre le Maroc — Immersion et Destinations">
       {/* 01. SPLIT DUAL CINEMATIC BACKGROUNDS */}
       <div className="morocco-hero__backgrounds" aria-hidden="true">
         {/* Left Side: Univers Océan */}
@@ -42,7 +44,7 @@ export const MoroccoHero: React.FC<MoroccoHeroProps> = ({ onSelectDestination })
         {/* TOP CENTRAL EDITORIAL HEADLINE */}
         <div className="morocco-hero__center-header">
           <span className="morocco-hero__micro-signature">TERRES D'ÉMOTIONS</span>
-          <h1 className="morocco-hero__title font-serif">Découvrez le Maroc</h1>
+          <h1 className="morocco-hero__title font-serif">Découvre le Maroc</h1>
           <p className="morocco-hero__subtitle font-serif">Une ville. Une histoire. Un voyage.</p>
           
           {/* Moroccan Star Emblem & Delicate Dividers */}

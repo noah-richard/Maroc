@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon } from '../../common/Icon/Icon';
 import type { WeatherInfo } from '../../../types/destinationPage';
-import './DestinationHero.css';
+import './DestinationWeather.css';
 
 interface DestinationWeatherProps {
   weather: WeatherInfo;

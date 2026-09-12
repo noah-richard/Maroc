@@ -1,0 +1,147 @@
+/* =========================================
+   MOROCCO HERO RESPONSIVE LAYOUT (Tablet & Mobile)
+   ========================================= */
+
+@media (max-width: 1100px) {
+  .morocco-hero__split-grid {
+    gap: 36px;
+  }
+
+  .morocco-hero__cards-grid {
+    max-width: 100%;
+    gap: 10px;
+  }
+
+  .morocco-hero__signature {
+    bottom: -28px;
+    font-size: 2.2rem;
+  }
+}
+
+/* TABLET & MOBILE RECOMPOSITION */
+@media (max-width: 860px) {
+  .morocco-hero {
+    min-height: auto;
+    padding-top: 90px;
+    padding-bottom: 40px;
+  }
+
+  /* Adaptive Diagonal to Horizontal Separation */
+  .morocco-hero__bg-panel--coastal {
+    width: 100%;
+    height: 52%;
+    top: 0;
+    bottom: auto;
+    clip-path: none;
+    -webkit-clip-path: none;
+  }
+
+  .morocco-hero__bg-panel--atlas {
+    width: 100%;
+    height: 52%;
+    top: auto;
+    bottom: 0;
+    clip-path: none;
+    -webkit-clip-path: none;
+  }
+
+  .morocco-hero__diagonal-glow {
+    top: 48%;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(229, 178, 126, 0.8) 50%,
+      transparent 100%
+    );
+  }
+
+  .morocco-hero__split-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: stretch;
+  }
+
+  .morocco-hero__universe--ocean,
+  .morocco-hero__universe--atlas {
+    padding: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .morocco-hero__quote {
+    text-align: center;
+  }
+
+  .morocco-hero__cards-grid {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .morocco-hero__signature {
+    position: static;
+    transform: rotate(-3deg);
+    margin-top: 24px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .morocco-hero {
+    padding-top: 80px;
+    padding-bottom: 32px;
+  }
+
+  .morocco-hero__content {
+    padding: 0 16px;
+  }
+
+  .morocco-hero__center-header {
+    margin-bottom: 24px;
+  }
+
+  .morocco-hero__title {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+    line-height: 1.08;
+  }
+
+  .morocco-hero__subtitle {
+    font-size: 0.95rem;
+  }
+
+  .morocco-hero__split-grid {
+    gap: 36px;
+  }
+
+  .morocco-hero__quote {
+    font-size: 1.35rem;
+    margin-bottom: 12px;
+  }
+
+  .morocco-hero__cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    max-width: 100%;
+  }
+
+  .morocco-hero__signature {
+    font-size: 1.8rem;
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .morocco-hero__title {
+    font-size: 1.8rem;
+  }
+
+  .morocco-hero__micro-signature {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+  }
+
+  .morocco-hero__cards-grid {
+    gap: 6px;
+  }
+}

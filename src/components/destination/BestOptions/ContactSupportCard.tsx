@@ -1,5 +1,6 @@
 import React from 'react';
 import type { SupportContact } from '../../../types/destinationPage';
+import './ContactSupportCard.css';
 
 interface ContactSupportCardProps {
   contact: SupportContact;

@@ -68,8 +68,9 @@ export const Icon: React.FC<IconProps> = ({
   const iconProps = {
     size,
     color,
-    className,
-    'aria-hidden': ariaHidden
+    className: `app-icon ${className}`.trim(),
+    'aria-hidden': ariaHidden,
+    style: { display: 'inline-block', verticalAlign: 'middle', flexShrink: 0 }
   };
 
   switch (name) {

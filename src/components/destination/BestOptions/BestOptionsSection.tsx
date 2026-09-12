@@ -18,13 +18,12 @@ export const BestOptionsSection: React.FC<BestOptionsSectionProps> = ({
   selectedCategory: initialCategory = 'all',
 }) => {
   const [activeTab, setActiveTab] = useState<string>(initialCategory);
+  const [prevCategory, setPrevCategory] = useState<string>(initialCategory);
 
-  // Sync if prop changes
-  React.useEffect(() => {
-    if (initialCategory) {
-      setActiveTab(initialCategory);
-    }
-  }, [initialCategory]);
+  if (prevCategory !== initialCategory) {
+    setPrevCategory(initialCategory);
+    setActiveTab(initialCategory);
+  }
 
   const categories = [
     { id: 'all', label: 'Tous les coups de cœur' },

@@ -1,0 +1,132 @@
+/* =========================================
+   VISITOR COUNTER COMPONENT STYLES
+   Badge d'affluence en temps réel (Top-Left)
+   ========================================= */
+
+.visitor-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill, 9999px);
+  background: rgba(8, 20, 30, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 163, 115, 0.35);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  user-select: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.visitor-counter:hover {
+  border-color: rgba(212, 163, 115, 0.7);
+  box-shadow: 0 6px 18px rgba(212, 163, 115, 0.2);
+  transform: translateY(-1px);
+}
+
+/* 01. PULSE LIVE INDICATOR */
+.visitor-counter__pulse {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10px;
+  height: 10px;
+}
+
+.visitor-counter__pulse::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.4);
+  animation: counterPulse 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+.visitor-counter__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #22C55E;
+  box-shadow: 0 0 6px #22C55E;
+  z-index: 1;
+}
+
+@keyframes counterPulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* 02. TYPOGRAPHY */
+.visitor-counter__label {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.visitor-counter__number {
+  color: #E5B27E;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 10px rgba(229, 178, 126, 0.4);
+}
+
+/* DEFAULT WHITE NAVBAR VARIANT */
+.navbar--default .visitor-counter {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(200, 80, 61, 0.25);
+  color: var(--color-secondary, #0F2937);
+  box-shadow: 0 2px 10px rgba(15, 41, 55, 0.08);
+}
+
+.navbar--default .visitor-counter__number {
+  color: var(--color-primary, #C8503D);
+  text-shadow: none;
+}
+
+/* 03. RESPONSIVE */
+@media (max-width: 992px) {
+  .visitor-counter {
+    padding: 4px 10px;
+    font-size: 0.68rem;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 680px) {
+  .visitor-counter {
+    font-size: 0.62rem;
+    padding: 2px 7px;
+    gap: 4px;
+    margin-left: 33px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  }
+
+  .visitor-counter__text-lead {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .visitor-counter {
+    margin-left: 0;
+    padding: 2px 6px;
+    font-size: 0.58rem;
+  }
+}

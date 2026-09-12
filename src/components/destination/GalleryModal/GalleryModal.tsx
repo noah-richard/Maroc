@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import type { GalleryImage } from '../../../types/destinationPage';
 import './GalleryModal.css';
+import './GalleryModalResponsive.css';
 
 interface GalleryModalProps {
   isOpen: boolean;

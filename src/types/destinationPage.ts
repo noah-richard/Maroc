@@ -38,7 +38,7 @@ export interface Advertisement {
   tag: string; // e.g. "HÔTEL & SPA"
   badge?: string; // alias
   title: string; // e.g. "Évadez-vous à Marrakech"
-  subtitle: string; // e.g. "Des séjours d'exception aux meilleurs prix"
+  subtitle: string; // e.g. "Des séjours d'exception sélectionnés pour vous"
   description?: string; // alias
   ctaText: string; // e.g. "Découvrir les offres"
   imageUrl: string;
@@ -65,14 +65,14 @@ export interface RecommendationItem {
   reviewsCount: number; // e.g. 120
   stars?: number; // 1-5
   location: string; // e.g. "Médina, Marrakech"
-  priceStartingFrom?: number; // e.g. 890
-  price?: string | number; // alias
-  currency?: string; // e.g. "MAD"
-  pricePeriod?: string; // e.g. "nuit"
   badge?: string;
   tags?: string[];
   isFavorite?: boolean;
   link?: string;
+  priceStartingFrom?: number;
+  price?: string | number;
+  currency?: string;
+  pricePeriod?: string;
 }
 
 export interface FeaturedExperience {
@@ -80,7 +80,7 @@ export interface FeaturedExperience {
   tag: string; // e.g. "ÉVÉNEMENT", "EXPÉRIENCE", "INCONTOURNABLE", "GASTRONOMIE"
   tagType: 'event' | 'experience' | 'highlight' | 'gastronomy';
   title: string; // e.g. "Festival des Arts Populaires"
-  metaInfo: string; // e.g. "12 - 20 juin 2026", "À partir de 1 800 MAD"
+  metaInfo: string; // e.g. "12 - 20 juin 2026", "Au lever du soleil"
   imageUrl: string;
   linkHref?: string;
   badge?: string;

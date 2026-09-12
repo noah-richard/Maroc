@@ -1,0 +1,115 @@
+/* ==========================================================================
+   Destination Bar Component Styles
+   ========================================================================== */
+
+.destination-bar {
+  display: flex;
+  flex-direction: column;
+  background: rgba(7, 20, 29, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  padding: 8px 12px;
+  margin-top: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  min-width: 170px;
+  max-width: 210px;
+}
+
+.destination-bar__header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero__universe--mountain .destination-bar__header {
+  flex-direction: row-reverse;
+}
+
+.destination-bar__icon {
+  display: flex;
+  align-items: center;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.6));
+}
+
+.destination-bar__header-title {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #E5B27E;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.destination-bar__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0;
+  margin: 0;
+}
+
+.destination-bar__item {
+  width: 100%;
+}
+
+.destination-bar__btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  line-height: 1.25;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.hero__universe--mountain .destination-bar__btn {
+  flex-direction: row-reverse;
+}
+
+.destination-bar__btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #E5B27E;
+}
+
+.destination-bar__btn-name {
+  white-space: nowrap;
+}
+
+.destination-bar__btn-arrow {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #E5B27E;
+  display: flex;
+  align-items: center;
+}
+
+.hero__universe--mountain .destination-bar__btn-arrow {
+  transform: translateX(4px) rotate(180deg);
+}
+
+.destination-bar__btn:hover .destination-bar__btn-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.hero__universe--mountain .destination-bar__btn:hover .destination-bar__btn-arrow {
+  opacity: 1;
+  transform: translateX(0) rotate(180deg);
+}

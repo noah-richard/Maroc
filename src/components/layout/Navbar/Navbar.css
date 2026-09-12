@@ -16,7 +16,7 @@
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* 01. MINIMAL VARIANT (FOR NEW HOME HERO) */
+/* 01. MINIMAL VARIANT (FOR HOME HERO) */
 .navbar--minimal {
   background: linear-gradient(180deg, rgba(6, 17, 25, 0.75) 0%, rgba(6, 17, 25, 0.35) 60%, transparent 100%);
   border-bottom: 1px solid transparent;
@@ -55,7 +55,14 @@
   justify-content: space-between;
 }
 
-/* 03. BRAND & LOGO */
+/* 03. LEFT GROUP (BRAND & VISITOR COUNTER) */
+.navbar__left {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1.8vw, 24px);
+}
+
+/* BRAND & LOGO */
 .navbar__brand {
   display: flex;
   align-items: center;
@@ -110,234 +117,75 @@
   text-shadow: none;
 }
 
-/* 04. MINIMAL RIGHT NAV (PO MOCKUP FIDELITY) */
-.navbar__minimal-right {
-  display: flex;
-  align-items: center;
-  gap: clamp(16px, 2vw, 28px);
-}
-
-.navbar__minimal-nav {
-  display: flex;
-  align-items: center;
-  gap: clamp(16px, 2.2vw, 32px);
-}
-
-.navbar__minimal-link {
-  font-family: var(--font-sans);
-  font-size: 0.92rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.92);
-  text-decoration: none;
-  transition: all 0.2s ease;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-}
-
-.navbar__minimal-link:hover {
-  color: #E5B27E;
-  text-shadow: 0 0 10px rgba(229, 178, 126, 0.4);
-}
-
-.navbar__minimal-link--partner {
-  font-weight: 600;
-}
-
-.navbar__minimal-sep {
-  color: rgba(255, 255, 255, 0.35);
-  font-size: 0.95rem;
-  font-weight: 300;
-}
-
-/* LANGUAGE SELECTOR */
-.navbar__lang-btn--minimal {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: transparent;
-  border: none;
-  color: #FFFFFF;
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  padding: 4px 6px;
-  border-radius: 6px;
-  transition: background 0.2s ease;
-}
-
-.navbar__lang-btn--minimal:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: #E5B27E;
-}
-
-.navbar__flag {
-  font-size: 1.1rem;
-}
-
-/* LOGIN PILL (PO MOCKUP: Pill outline with user icon) */
-.navbar__login-pill {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 18px;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.38);
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: #FFFFFF;
-  font-family: var(--font-sans);
-  font-size: 0.92rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-}
-
-.navbar--default .navbar__login-pill {
-  color: var(--color-secondary);
-  border-color: var(--color-border-medium);
-  background: transparent;
-  text-shadow: none;
-}
-
-.navbar__login-pill:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.75);
-  box-shadow: 0 0 14px rgba(255, 255, 255, 0.25);
-  transform: translateY(-1px);
-}
-
-.navbar__login-pill-icon {
-  display: flex;
-  align-items: center;
-}
-
-/* HAMBURGER BUTTON */
-.navbar__hamburger {
-  display: none;
-  background: none;
-  border: none;
-  color: #FFFFFF;
-  cursor: pointer;
-  padding: 6px;
-  border-radius: 6px;
-}
-
-.navbar--default .navbar__hamburger {
-  color: var(--color-secondary);
-}
-
-/* 05. FULL NAVIGATION (Internal Pages) */
-.navbar__nav-list {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.navbar__nav-link {
-  font-family: var(--font-sans);
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--color-text-secondary);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.navbar__nav-link:hover {
-  color: var(--color-primary);
-}
-
-.navbar__actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-/* 06. MOBILE DRAWER */
-.navbar__mobile-drawer {
-  position: fixed;
-  top: 68px;
-  left: 0;
-  right: 0;
-  background: #0B1D28;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 24px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-  animation: navSlideDown 0.25s ease-out;
-}
-
-@keyframes navSlideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.navbar__mobile-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.navbar__mobile-list a {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: #FFFFFF;
-  text-decoration: none;
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-
-.navbar__mobile-divider {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.12);
-  margin: 20px 0;
-}
-
-.navbar__mobile-auth .navbar__mobile-login-btn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 10px;
-  color: #FFFFFF;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-/* RESPONSIVE */
-@media (max-width: 860px) {
-  .navbar__minimal-nav,
-  .navbar__minimal-sep,
-  .navbar__lang-wrapper {
-    display: none;
+/* 04. MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .navbar {
+    height: var(--navbar-height-mobile, 72px);
   }
 
-  .navbar__hamburger {
+  .navbar__container {
+    padding: 0 14px;
+    gap: 8px;
+  }
+
+  .navbar__left {
+    gap: 10px;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .navbar__logo-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .navbar__brand {
+    gap: 8px;
+  }
+
+  .navbar__brand-name {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .navbar__left {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2px;
+  }
+
+  .navbar__brand {
+    gap: 7px;
+    line-height: 1;
+  }
+
+  .navbar__logo-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .navbar__brand-name {
+    font-size: 1.05rem;
+    line-height: 1.1;
+    white-space: nowrap;
   }
 }
 
-@media (max-width: 520px) {
-  .navbar__brand-tagline {
-    display: none;
+@media (max-width: 380px) {
+  .navbar__container {
+    padding: 0 10px;
+    gap: 6px;
   }
 
-  .navbar__login-pill span {
-    display: none;
+  .navbar__logo-icon {
+    width: 24px;
+    height: 24px;
   }
 
-  .navbar__login-pill {
-    padding: 8px 10px;
+  .navbar__brand-name {
+    font-size: 0.95rem;
   }
 }

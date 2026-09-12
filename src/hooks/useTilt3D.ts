@@ -28,7 +28,12 @@ export const useTilt3D = (options: TiltOptions = {}) => {
 
   const elementRef = useRef<HTMLDivElement | null>(null);
   const rafRef = useRef<number | null>(null);
-  const [isSupported, setIsSupported] = useState(true);
+  const [isSupported, setIsSupported] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    }
+    return false;
+  });
 
   const [tilt, setTilt] = useState<TiltState>({
     rotateX: 0,
@@ -39,16 +44,13 @@ export const useTilt3D = (options: TiltOptions = {}) => {
     isHovered: false
   });
 
-  // Only enable on devices that actually support hover with a mouse/pointer
+  // Listen to media query changes
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const mediaQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
-      setIsSupported(mediaQuery.matches);
-
-      const handleChange = (e: MediaQueryListEvent) => setIsSupported(e.matches);
-      mediaQuery.addEventListener('change', handleChange);
-      return () => mediaQuery.removeEventListener('change', handleChange);
-    }
+    if (typeof window === 'undefined') return;
+    const mediaQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const handleChange = (e: MediaQueryListEvent) => setIsSupported(e.matches);
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
   const handleMouseMove = useCallback(

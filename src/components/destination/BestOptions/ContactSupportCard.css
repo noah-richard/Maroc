@@ -1,0 +1,168 @@
+/* ==========================================================================
+   Contact Support Card Component Styles
+   ========================================================================== */
+
+.contact-support-card {
+  position: relative;
+  background: linear-gradient(160deg, #1e293b 0%, #0f172a 100%);
+  border: 1px solid rgba(200, 147, 69, 0.35);
+  border-radius: 20px;
+  padding: 1.75rem;
+  color: #ffffff;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.15);
+  overflow: hidden;
+}
+
+.support-card-glow {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(200, 147, 69, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.support-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.support-avatar-wrap {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+}
+
+.support-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #c89345;
+}
+
+.support-status-indicator {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 13px;
+  height: 13px;
+  background: #22c55e;
+  border: 2px solid #0f172a;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.8);
+}
+
+.support-header-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.support-badge {
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: #c89345;
+  font-weight: 700;
+  margin-bottom: 0.15rem;
+}
+
+.support-advisor-name {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.support-advisor-role {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.support-card-body {
+  margin-bottom: 1.5rem;
+}
+
+.support-pitch-title {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+.support-pitch-desc {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+  margin: 0 0 0.85rem 0;
+}
+
+.support-hours-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.support-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.support-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.support-btn-whatsapp {
+  background: #25d366;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+}
+
+.support-btn-whatsapp:hover {
+  background: #1eb857;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+.support-btn-phone {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.support-btn-phone:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #c89345;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .contact-support-card {
+    padding: 1.35rem 1.15rem;
+    border-radius: 16px;
+  }
+
+  .support-btn {
+    min-height: var(--tap-target-min, 48px);
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from '../common/Icon/Icon';
-import './Hero.css';
+import './DestinationBar.css';
 
 interface DestinationBarProps {
   destinations: { name: string; slug: string }[];

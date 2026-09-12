@@ -1,7 +1,7 @@
 import React from 'react';
 import seaDefaultImage from '../../assets/Mer.jpg';
 import mountainDefaultImage from '../../assets/Montagnes.jpg';
-import './Hero.css';
+import './HeroSplitBackground.css';
 
 interface HeroSplitBackgroundProps {
   seaImageUrl?: string;

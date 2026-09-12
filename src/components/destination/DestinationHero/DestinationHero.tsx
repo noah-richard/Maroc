@@ -4,6 +4,7 @@ import { DestinationWeather } from './DestinationWeather';
 import { Icon } from '../../common/Icon/Icon';
 import type { CityDestination } from '../../../types/destinationPage';
 import './DestinationHero.css';
+import './DestinationHeroResponsive.css';
 
 interface DestinationHeroProps {
   destination: CityDestination;

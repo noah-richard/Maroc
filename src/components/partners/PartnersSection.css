@@ -155,14 +155,26 @@
     padding: 32px 0 28px 0;
   }
 
+  .partners-section__container {
+    padding: 0 16px;
+  }
+
+  .partners-section__header {
+    gap: 12px;
+  }
+
   .partners-section__strip {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px 12px;
+    gap: 14px 10px;
   }
 
   .partners-section__title {
-    font-size: 0.82rem;
-    letter-spacing: 0.18em;
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+  }
+
+  .partners-section__footer {
+    gap: 10px;
   }
 
   .partners-section__baseline {

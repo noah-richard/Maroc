@@ -1,7 +1,7 @@
 import React from 'react';
 import type { SearchCategory } from '../../types/search';
 import { Icon } from '../common/Icon/Icon';
-import './SearchEngine.css';
+import './SearchTabs.css';
 
 interface SearchTabsProps {
   activeCategory: SearchCategory;

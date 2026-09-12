@@ -50,12 +50,10 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         </button>
 
         <div className="auth-modal__header">
-          <div className="auth-modal__logo-badge">
-            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18 3L3 31H33L18 3Z" fill="#C8503D" />
-              <path d="M18 11L9 31H27L18 11Z" fill="#FAFAF8" />
-              <path d="M18 18C15.8 18 14 21 14 25.5C14 29 15.8 31 18 31C20.2 31 22 29 22 25.5C22 21 20.2 18 18 18Z" fill="#0F2937" />
-            </svg>
+          <div className="auth-modal__logo-badge" aria-hidden="true">
+            <div className="auth-modal__avatar-medallion">
+              <Icon name="user" size={26} color="#FFFFFF" />
+            </div>
           </div>
           <h3 id="auth-modal-title" className="auth-modal__title">
             {mode === 'login' ? 'Bon retour parmi nous' : 'Rejoignez DecouvreLeMaroc'}

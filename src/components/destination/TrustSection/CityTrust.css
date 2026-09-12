@@ -6,23 +6,32 @@
   padding: 3.5rem 1.5rem;
   background: #ffffff;
   border-top: 1px solid #e2e8f0;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .city-trust-container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .city-trust-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 2rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .city-trust-item {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .city-trust-icon-box {
@@ -67,14 +76,19 @@
 /* Responsive */
 @media (max-width: 992px) {
   .city-trust-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.75rem;
   }
 }
 
 @media (max-width: 560px) {
+  .city-trust-section {
+    padding: 2.25rem 0.85rem;
+  }
+
   .city-trust-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
   }
 }
+

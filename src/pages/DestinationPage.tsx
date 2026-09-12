@@ -38,7 +38,7 @@ export const DestinationPage: React.FC = () => {
       metaDesc.setAttribute(
         'content',
         destination.seoDescription ||
-          `Découvrez ${destination.name} : hébergements, restaurants, incontournables et expériences uniques avec DecouvreLeMaroc.`
+          `Découvre ${destination.name} : hébergements, restaurants, incontournables et expériences uniques avec DecouvreLeMaroc.`
       );
     } else {
       document.title = 'Destination introuvable | DecouvreLeMaroc';

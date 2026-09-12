@@ -1,0 +1,209 @@
+/* =========================================
+   SEARCH FIELDS & DROPDOWNS STYLES
+   ========================================= */
+.search-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  position: relative;
+}
+
+.search-field__label {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  white-space: nowrap;
+}
+
+.search-field__input-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.search-field__icon {
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.search-field__input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  outline: none;
+  padding: 4px 0;
+}
+
+.search-field__input::placeholder {
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.search-field__input--date {
+  cursor: pointer;
+  color: var(--color-text-secondary);
+}
+
+.search-field__select {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  outline: none;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+/* GUESTS SELECTOR TRIGGER */
+.search-field__trigger {
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.search-field__val-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.search-field__chevron {
+  color: var(--color-text-muted);
+  margin-left: auto;
+}
+
+.search-field__dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  right: 0;
+  min-width: 220px;
+  background-color: #FFFFFF;
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 30px rgba(15, 41, 55, 0.15);
+  border: 1px solid var(--color-border-subtle);
+  padding: var(--space-2);
+  z-index: 100;
+}
+
+.search-field__dropdown-item {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.search-field__dropdown-item:hover,
+.search-field__dropdown-item.is-selected {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* CITY AUTOCOMPLETE DROPDOWN */
+.city-autocomplete__dropdown {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: -12px;
+  width: 320px;
+  background-color: #FFFFFF;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 36px rgba(15, 41, 55, 0.18);
+  border: 1px solid var(--color-border-subtle);
+  padding: var(--space-2);
+  z-index: 100;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.city-autocomplete__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.city-autocomplete__item:hover,
+.city-autocomplete__item.is-highlighted {
+  background-color: var(--color-primary-light);
+}
+
+.city-autocomplete__item-icon {
+  color: var(--color-accent-gold);
+}
+
+.city-autocomplete__item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.city-autocomplete__item-name {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.city-autocomplete__item-region {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.city-autocomplete__empty {
+  padding: var(--space-3);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .search-field__input,
+  .search-field__select,
+  .search-field__val-text {
+    font-size: 1rem; /* 16px to prevent iOS Safari auto-zoom */
+  }
+
+  .search-field__input-wrap {
+    min-height: 44px;
+  }
+
+  .city-autocomplete__dropdown {
+    width: 100%;
+    left: 0;
+    right: 0;
+    max-height: 240px;
+    box-shadow: 0 12px 36px rgba(15, 41, 55, 0.22);
+    z-index: 105;
+  }
+
+  .city-autocomplete__item {
+    padding: 10px 12px;
+  }
+
+  .search-field__dropdown {
+    width: 100%;
+    left: 0;
+    right: 0;
+    min-width: 100%;
+    z-index: 105;
+  }
+
+  .search-field__dropdown-item {
+    padding: 12px 14px;
+    font-size: 0.95rem;
+  }
+}

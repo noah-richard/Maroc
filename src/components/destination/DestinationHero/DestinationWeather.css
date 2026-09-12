@@ -1,0 +1,61 @@
+/* =========================================
+   DESTINATION WEATHER WIDGET STYLES
+   ========================================= */
+
+.destination-weather {
+  display: flex;
+  flex-direction: column;
+  background: rgba(7, 20, 29, 0.68);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-md);
+  padding: 8px 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  color: #FFFFFF;
+  min-width: 130px;
+  cursor: pointer;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.destination-weather:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.destination-weather__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.destination-weather__temp {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.destination-weather__arrow {
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+}
+
+.destination-weather__details {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 2px;
+}
+
+.destination-weather__label {
+  font-weight: 600;
+}
+
+.destination-weather__condition {
+  color: rgba(255, 255, 255, 0.75);
+}

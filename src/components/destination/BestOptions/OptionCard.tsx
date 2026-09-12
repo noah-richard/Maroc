@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import type { RecommendationItem } from '../../../types/destinationPage';
+import './OptionCard.css';
 
 interface OptionCardProps {
   item: RecommendationItem;
@@ -9,11 +10,6 @@ export const OptionCard: React.FC<OptionCardProps> = ({ item }) => {
   const [isFavorite, setIsFavorite] = useState(item.isFavorite || false);
 
   const title = item.title || item.name;
-  const displayPrice =
-    item.price ||
-    (item.priceStartingFrom
-      ? `${item.priceStartingFrom.toLocaleString('fr-FR')} ${item.currency || 'MAD'}`
-      : 'Sur demande');
 
   const categoryLabels: Record<string, string> = {
     hotels: 'Hôtel & Riad',
@@ -84,15 +80,22 @@ export const OptionCard: React.FC<OptionCardProps> = ({ item }) => {
           </div>
         )}
 
-        {/* Price & CTA */}
+        {/* Status & CTA */}
         <div className="option-card-footer">
-          <div className="option-price-wrap">
-            <span className="option-price-label">À partir de</span>
-            <span className="option-price-val">
-              {displayPrice}{' '}
-              {item.pricePeriod && (
-                <span className="option-price-period">/ {item.pricePeriod}</span>
-              )}
+          <div className="option-status-wrap">
+            <span className="option-status-badge">
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                aria-hidden="true"
+              >
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Sélection certifiée</span>
             </span>
           </div>
 
@@ -104,6 +107,17 @@ export const OptionCard: React.FC<OptionCardProps> = ({ item }) => {
             }}
           >
             Découvrir
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
           </a>
         </div>
       </div>

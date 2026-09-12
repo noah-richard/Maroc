@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import type { Advertisement } from '../../../types/destinationPage';
+import './FeaturedAdCarousel.css';
+import './FeaturedAdCarouselResponsive.css';
 
 interface FeaturedAdCarouselProps {
   ads: Advertisement[];
@@ -7,11 +9,19 @@ interface FeaturedAdCarouselProps {
 
 export const FeaturedAdCarousel: React.FC<FeaturedAdCarouselProps> = ({ ads }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [prevAds, setPrevAds] = useState(ads);
   const [isPaused, setIsPaused] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
   const timerRef = useRef<number | null>(null);
+
+  // Sync index reset when ads change without cascading effect
+  if (prevAds !== ads) {
+    setPrevAds(ads);
+    setCurrentIndex(0);
+    setDragOffset(0);
+  }
 
   const nextSlide = useCallback(() => {
     if (ads.length <= 1) return;
@@ -26,21 +36,11 @@ export const FeaturedAdCarousel: React.FC<FeaturedAdCarouselProps> = ({ ads }) =
   // Autoplay timer: 5 seconds, pauses on hover or drag
   useEffect(() => {
     if (ads.length <= 1 || isPaused || isDragging) return;
-
-    timerRef.current = window.setInterval(() => {
-      nextSlide();
-    }, 5000);
-
+    timerRef.current = window.setInterval(() => nextSlide(), 5000);
     return () => {
       if (timerRef.current !== null) window.clearInterval(timerRef.current);
     };
   }, [ads.length, isPaused, isDragging, nextSlide]);
-
-  // Reset index when destination or ads change
-  useEffect(() => {
-    setCurrentIndex(0);
-    setDragOffset(0);
-  }, [ads]);
 
   // Touch Swipe Handlers
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -54,7 +54,7 @@ export const FeaturedAdCarousel: React.FC<FeaturedAdCarouselProps> = ({ ads }) =
     if (!isDragging) return;
     const currentX = e.touches[0].clientX;
     const diff = currentX - startX;
-    setDragOffset(diff);
+    setDragOffset(Math.max(-150, Math.min(150, diff)));
   };
 
   const handleTouchEnd = () => {
@@ -65,6 +65,11 @@ export const FeaturedAdCarousel: React.FC<FeaturedAdCarouselProps> = ({ ads }) =
     } else if (dragOffset > 45) {
       prevSlide();
     }
+    setDragOffset(0);
+  };
+
+  const handleTouchCancel = () => {
+    setIsDragging(false);
     setDragOffset(0);
   };
 
@@ -79,7 +84,7 @@ export const FeaturedAdCarousel: React.FC<FeaturedAdCarouselProps> = ({ ads }) =
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return;
     const diff = e.clientX - startX;
-    setDragOffset(diff);
+    setDragOffset(Math.max(-150, Math.min(150, diff)));
   };
 
   const handleMouseUp = () => {
@@ -116,6 +121,7 @@ export const FeaturedAdCarousel: React.FC<FeaturedAdCarouselProps> = ({ ads }) =
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchCancel}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
@@ -123,7 +129,8 @@ export const FeaturedAdCarousel: React.FC<FeaturedAdCarouselProps> = ({ ads }) =
         <div
           className="carousel-track"
           style={{
-            transform: `translateX(calc(-${currentIndex * 100}% + ${dragOffset}px))`,
+            width: `${ads.length * 100}%`,
+            transform: `translateX(calc(-${currentIndex * (100 / ads.length)}% + ${dragOffset}px))`,
             transition: isDragging ? 'none' : 'transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1)',
           }}
         >
@@ -137,6 +144,7 @@ export const FeaturedAdCarousel: React.FC<FeaturedAdCarouselProps> = ({ ads }) =
               <div
                 key={ad.id || idx}
                 className="carousel-slide"
+                style={{ width: `${100 / ads.length}%` }}
                 aria-hidden={idx !== currentIndex}
               >
                 <img
@@ -210,7 +218,7 @@ export const FeaturedAdCarousel: React.FC<FeaturedAdCarouselProps> = ({ ads }) =
         </>
       )}
 
-      {/* Centered Dots matching PO Mockup */}
+      {/* Centered Dots matching Mockup */}
       {ads.length > 1 && (
         <div className="carousel-dots" role="tablist">
           {ads.map((ad, idx) => (

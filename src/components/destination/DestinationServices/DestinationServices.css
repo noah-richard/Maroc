@@ -7,17 +7,23 @@
   margin-top: -3.25rem;
   z-index: 20;
   padding: 0 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .destination-services-container {
   max-width: 1240px;
+  width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .destination-services-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 0.85rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .destination-service-card {
@@ -32,6 +38,9 @@
   cursor: pointer;
   text-align: left;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .destination-service-card:hover {
@@ -141,36 +150,49 @@
 /* Responsive */
 @media (max-width: 1024px) {
   .destination-services-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 640px) {
   .destination-services-section {
     margin-top: -1.5rem;
-    padding: 0 1rem;
+    padding: 0 0.85rem;
   }
 
   .destination-services-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.65rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
   }
 
   .destination-service-card {
-    padding: 0.85rem;
-    gap: 0.65rem;
+    padding: 0.75rem 0.65rem;
+    gap: 0.55rem;
+    min-height: var(--tap-target-min, 44px);
   }
 
   .service-card-icon-wrap {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
   }
 
   .service-card-title {
-    font-size: 0.84rem;
+    font-size: 0.82rem;
   }
 
   .service-card-count {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
   }
 }
+
+@media (max-width: 380px) {
+  .destination-services-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.5rem;
+  }
+
+  .destination-service-card {
+    padding: 0.85rem 1rem;
+  }
+}
+

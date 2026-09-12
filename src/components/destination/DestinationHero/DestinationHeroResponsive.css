@@ -1,0 +1,112 @@
+/* =========================================
+   DESTINATION HERO RESPONSIVE LAYOUT
+   Optimisé pour tablettes et mobiles
+   ========================================= */
+
+@media (max-width: 992px) {
+  .destination-hero__top-bar {
+    align-items: center;
+  }
+
+  .destination-hero__quick-infos {
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 768px) {
+  .destination-hero {
+    min-height: 540px;
+    padding-top: 80px;
+    padding-bottom: 50px;
+  }
+
+  .destination-hero__container {
+    padding: 0 16px;
+  }
+
+  .destination-hero__top-bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .destination-weather {
+    align-self: auto;
+  }
+
+  .destination-hero__content {
+    margin: 16px 0;
+  }
+
+  .destination-hero__title {
+    font-size: clamp(2.4rem, 9vw, 3.5rem);
+    line-height: 1.08;
+    margin-bottom: 10px;
+  }
+
+  .destination-hero__description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .destination-hero__bottom-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .destination-hero__quick-infos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px 14px;
+    width: 100%;
+  }
+
+  .destination-hero__info-item {
+    gap: 8px;
+  }
+
+  .destination-hero__info-val {
+    max-width: 100%;
+    font-size: 0.78rem;
+  }
+
+  .destination-hero__gallery-btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 46px;
+    font-size: 0.92rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .destination-hero {
+    min-height: 500px;
+    padding-top: 76px;
+    padding-bottom: 40px;
+  }
+
+  .destination-hero__title {
+    font-size: clamp(2.1rem, 8.5vw, 2.75rem);
+  }
+
+  .destination-hero__quick-infos {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .destination-hero__info-item {
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .destination-hero__info-item:last-child {
+    border-bottom: none;
+  }
+}

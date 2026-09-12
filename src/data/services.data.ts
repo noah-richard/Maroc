@@ -5,7 +5,7 @@ export const SERVICES_DATA: ServiceOffering[] = [
     id: 'service-stays',
     category: 'stays',
     title: 'Hébergements',
-    description: 'Hôtels, riads, appartements, villas... pour tous les budgets.',
+    description: 'Hôtels, riads, appartements, villas... pour toutes vos envies d’évasion.',
     imageUrl: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80',
     iconType: 'home',
     actionUrl: '#hebergements',

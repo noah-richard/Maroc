@@ -1,0 +1,92 @@
+/* =========================================
+   SEARCH TABS STYLES
+   ========================================= */
+.search-tabs {
+  display: inline-flex;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: 6px 8px 0 8px;
+  gap: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.8);
+  border-left: 1px solid rgba(255, 255, 255, 0.8);
+  border-right: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.search-tab {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.65rem 1.25rem;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.search-tab:hover {
+  color: var(--color-primary);
+  background-color: rgba(255, 255, 255, 0.65);
+}
+
+.search-tab.is-active {
+  color: var(--color-secondary);
+  background-color: #FFFFFF;
+  box-shadow: 0 -3px 12px rgba(15, 41, 55, 0.06);
+}
+
+.search-tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  height: 2.5px;
+  background-color: var(--color-primary);
+  border-radius: 2px 2px 0 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+}
+
+.search-tab.is-active::after {
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .search-tabs {
+    width: 100%;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px 6px 0 6px;
+    gap: 2px;
+  }
+
+  .search-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .search-tab {
+    flex: 1;
+    justify-content: center;
+    padding: 0.65rem 0.5rem;
+    font-size: 0.78rem;
+    white-space: nowrap;
+    min-height: var(--tap-target-min, 44px);
+    gap: 6px;
+  }
+
+  .search-tab svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+}

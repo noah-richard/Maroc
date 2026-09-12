@@ -145,3 +145,30 @@
     transform: none !important;
   }
 }
+
+/* MOBILE COMPACT ADJUSTMENTS */
+@media (max-width: 520px) {
+  .destination-card {
+    height: 94px;
+    border-radius: 11px;
+  }
+
+  .destination-card__content {
+    padding: 6px 8px;
+  }
+
+  .destination-card__name {
+    font-size: 0.92rem;
+    letter-spacing: 0.2px;
+  }
+
+  .destination-card__arrow {
+    width: 24px;
+    height: 24px;
+  }
+
+  .destination-card__arrow-icon {
+    width: 12px;
+    height: 12px;
+  }
+}

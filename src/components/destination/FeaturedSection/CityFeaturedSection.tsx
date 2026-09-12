@@ -32,7 +32,6 @@ export const CityFeaturedSection: React.FC<CityFeaturedSectionProps> = ({
             const reviewsCount = exp.reviewsCount ?? 142;
             const description =
               exp.description || exp.metaInfo || 'Une activité immersive au cœur de la tradition marocaine.';
-            const price = exp.price || exp.metaInfo || 'Dès 350 MAD';
             const link = exp.link || exp.linkHref || '#';
 
             return (
@@ -64,9 +63,21 @@ export const CityFeaturedSection: React.FC<CityFeaturedSectionProps> = ({
                   <p className="featured-exp-desc">{description}</p>
 
                   <div className="featured-exp-footer">
-                    <div className="featured-exp-price-col">
-                      <span className="exp-price-label">Tarif conseillé</span>
-                      <span className="exp-price-val">{price}</span>
+                    <div className="featured-exp-status-col">
+                      <span className="exp-status-badge">
+                        <svg
+                          width="13"
+                          height="13"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                          aria-hidden="true"
+                        >
+                          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>
+                        <span>Expérience premium</span>
+                      </span>
                     </div>
 
                     <a
@@ -76,7 +87,18 @@ export const CityFeaturedSection: React.FC<CityFeaturedSectionProps> = ({
                         if (link === '#') e.preventDefault();
                       }}
                     >
-                      Réserver
+                      Découvrir
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        aria-hidden="true"
+                      >
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
                     </a>
                   </div>
                 </div>
