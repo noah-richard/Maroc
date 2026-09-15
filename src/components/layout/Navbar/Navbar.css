@@ -71,15 +71,17 @@
 }
 
 .navbar__logo-icon {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  transition: transform 0.3s ease;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+  transition: transform 0.35s cubic-bezier(0.34, 1.4, 0.64, 1);
 }
 
 .navbar__brand:hover .navbar__logo-icon {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
 .navbar__brand-text {

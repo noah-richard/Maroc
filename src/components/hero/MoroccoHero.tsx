@@ -45,7 +45,7 @@ export const MoroccoHero: React.FC<MoroccoHeroProps> = ({ onSelectDestination })
         <div className="morocco-hero__center-header">
           <span className="morocco-hero__micro-signature">TERRES D'ÉMOTIONS</span>
           <h1 className="morocco-hero__title font-serif">Découvre le Maroc</h1>
-          <p className="morocco-hero__subtitle font-serif">Une ville. Une histoire. Un voyage.</p>
+          <p className="morocco-hero__subtitle font-serif">Un royaume. Une histoire. Un voyage.</p>
           
           {/* Moroccan Star Emblem & Delicate Dividers */}
           <div className="morocco-hero__emblem" aria-hidden="true">

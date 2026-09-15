@@ -9,7 +9,7 @@ export const PartnersSection: React.FC = () => {
         {/* Section Header with Delicate Horizontal Lines */}
         <div className="partners-section__header">
           <span className="partners-section__divider" />
-          <h2 className="partners-section__title">NOS PARTENAIRES</h2>
+          <h2 className="partners-section__title">Nos partenaires premium</h2>
           <span className="partners-section__divider" />
         </div>
 

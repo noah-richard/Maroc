@@ -86,17 +86,17 @@ export const NavMobileMenu: React.FC<NavMobileMenuProps> = ({
             <li>
               <a href="#partenaires" onClick={(e) => onLinkClick(e, 'partenaires')}>
                 <div className="navbar__mobile-icon-wrap">
-                  <Icon name="star" size={18} />
+                  <Icon name="sparkles" size={18} />
                 </div>
-                <span>Devenir partenaire</span>
+                <span>À propos</span>
               </a>
             </li>
             <li>
               <a href="#partenaires" onClick={(e) => onLinkClick(e, 'partenaires')}>
                 <div className="navbar__mobile-icon-wrap">
-                  <Icon name="sparkles" size={18} />
+                  <Icon name="star" size={18} />
                 </div>
-                <span>À propos</span>
+                <span>Devenir partenaire</span>
               </a>
             </li>
           </ul>
