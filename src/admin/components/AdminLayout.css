@@ -1,0 +1,189 @@
+/* ==========================================================================
+   ADMIN LAYOUT & GLOBAL DESIGN SYSTEM (PRESTIGE MOROCCAN LIGHT PALETTE)
+   ========================================================================== */
+
+:root {
+  --admin-font-serif: 'Playfair Display', Georgia, serif;
+  --admin-font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --admin-primary: #C8503D;
+  --admin-primary-hover: #B53F2D;
+  --admin-amber: #D4A373;
+  --admin-amber-dark: #92400E;
+  --admin-emerald: #10B981;
+  --admin-emerald-dark: #065F46;
+
+  /* Universal Default: Moroccan Alabaster & Crisp Surfaces */
+  --admin-bg-base: #F8F6F2;
+  --admin-bg-surface: #FFFFFF;
+  --admin-bg-subtle: #FAF8F5;
+  --admin-bg-hover: #FDFCFA;
+  --admin-border-subtle: #E8E2D9;
+  --admin-border-strong: #D5CBC0;
+  --admin-border-highlight: rgba(200, 80, 61, 0.35);
+  
+  --admin-text-heading: #0F2937;
+  --admin-text-body: #1E293B;
+  --admin-text-secondary: #64748B;
+  --admin-text-muted: #8E7C68;
+
+  --admin-shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+  --admin-shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.04), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+  --admin-shadow-dropdown: 0 15px 35px -5px rgba(15, 23, 42, 0.08), 0 5px 15px rgba(0, 0, 0, 0.03);
+}
+
+.admin-root {
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: var(--admin-font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--admin-bg-base, #F8F6F2);
+  color: var(--admin-text-body, #1E293B);
+}
+
+/* --------------------------------------------------------------------------
+   01. LAYOUT STRUCTURE
+   -------------------------------------------------------------------------- */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  background-color: var(--admin-bg-base, #F8F6F2);
+}
+
+.admin-main-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow-x: hidden;
+  background-color: var(--admin-bg-base, #F8F6F2);
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+@media (min-width: 1025px) {
+  .admin-main-wrap {
+    margin-left: 270px;
+    width: calc(100% - 270px);
+    transition: margin-left 0.25s cubic-bezier(0.16, 1, 0.3, 1), width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .admin-main-wrap--collapsed,
+  .admin-sidebar--collapsed + .admin-main-wrap {
+    margin-left: 78px;
+    width: calc(100% - 78px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .admin-main-wrap {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+.admin-page-content {
+  flex: 1;
+  padding: 32px 36px 64px;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+  .admin-page-content {
+    padding: 24px 20px 48px;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-page-content {
+    padding: 16px 14px 40px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   02. REUSABLE CMS DESIGN SYSTEM CLASSES
+   -------------------------------------------------------------------------- */
+
+/* Cards & Surfaces */
+.admin-cms-card {
+  background: var(--admin-bg-surface, #FFFFFF);
+  border: 1px solid var(--admin-border-subtle, #E8E2D9);
+  border-radius: 16px;
+  box-shadow: var(--admin-shadow-card);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.admin-cms-card:hover {
+  border-color: var(--admin-border-strong, #D5CBC0);
+}
+
+/* Callout notification banner */
+.admin-cms-callout {
+  padding: 16px 20px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #FFF4F1 0%, #FDF8F0 100%);
+  border: 1px solid #F8B4A8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--admin-text-body, #1E293B);
+  box-shadow: 0 2px 12px rgba(200, 80, 61, 0.05);
+}
+
+/* Typography Helpers */
+.admin-heading-title {
+  color: var(--admin-text-heading, #0F2937);
+  font-family: var(--admin-font-serif);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.admin-text-body {
+  color: var(--admin-text-body, #1E293B);
+}
+
+.admin-text-secondary {
+  color: var(--admin-text-secondary, #64748B);
+}
+
+.admin-text-muted {
+  color: var(--admin-text-muted, #8E7C68);
+}
+
+/* Badges & Tags */
+.admin-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.725rem;
+  font-weight: 600;
+  background: #FAF8F5;
+  border: 1px solid #E8E2D9;
+  color: #475569;
+}
+
+.admin-chip--emerald {
+  background: #ECFDF5;
+  border-color: #A7F3D0;
+  color: #065F46;
+}
+
+.admin-chip--amber {
+  background: #FFFBEB;
+  border-color: #FDE68A;
+  color: #92400E;
+}
+
+.admin-chip--terracotta {
+  background: #FFF1EE;
+  border-color: #F8B4A8;
+  color: #C8503D;
+}

@@ -27,6 +27,7 @@ export const Footer: React.FC = () => {
             <div className="footer__col">
               <h4 className="footer__col-title">Explorer</h4>
               <ul className="footer__list">
+                <li><a href="/club">Le Club DécouvreLeMaroc</a></li>
                 <li><a href="#hebergements">Hébergements & Riads</a></li>
                 <li><a href="#voitures">Location de véhicules</a></li>
                 <li><a href="#restaurants">Tables & Gastronomie</a></li>
@@ -55,6 +56,7 @@ export const Footer: React.FC = () => {
                 <li><a href="#confidentialite">Politique de confidentialité</a></li>
                 <li><a href="#mentions">Mentions légales</a></li>
               </ul>
+
             </div>
           </div>
         </div>

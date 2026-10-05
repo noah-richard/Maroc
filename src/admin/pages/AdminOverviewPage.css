@@ -1,0 +1,342 @@
+.admin-overview-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.admin-welcome-banner {
+  background: linear-gradient(135deg, rgba(200, 80, 61, 0.18), rgba(212, 163, 115, 0.12), rgba(15, 41, 55, 0.8));
+  border: 1px solid rgba(200, 80, 61, 0.3);
+  border-radius: 18px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='light'] .admin-welcome-banner {
+  background: linear-gradient(135deg, #FFF1EE, #FDF7ED, #F0F4F8);
+  border-color: #F8B4A8;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.admin-welcome-banner__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #D4A373;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+
+.admin-welcome-banner__title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #FAFAF8;
+}
+
+[data-theme='light'] .admin-welcome-banner__title {
+  color: #0F2937;
+}
+
+.admin-welcome-banner__desc {
+  margin: 6px 0 0 0;
+  font-size: 0.875rem;
+  color: #CBD5E1;
+  max-width: 680px;
+  line-height: 1.45;
+}
+
+[data-theme='light'] .admin-welcome-banner__desc {
+  color: #475569;
+}
+
+.admin-welcome-banner__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.admin-action-alert-box {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 14px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+[data-theme='light'] .admin-action-alert-box {
+  background: #FFFBEB;
+  border-color: #FDE68A;
+}
+
+.admin-action-alert-box__lead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.admin-action-alert-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(245, 158, 11, 0.2);
+  color: #F59E0B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.admin-alert-cta-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: #D97706;
+  border: none;
+  color: #FFFFFF;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.admin-alert-cta-btn:hover {
+  background: #B45309;
+}
+
+.admin-analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 640px) {
+  .admin-analytics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-card {
+  background: rgba(16, 23, 38, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+[data-theme='light'] .admin-card {
+  background: #FFFFFF;
+  border-color: #E8E2D9;
+  box-shadow: 0 4px 18px rgba(15, 41, 55, 0.04);
+}
+
+.admin-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.admin-card__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #F8FAFC;
+}
+
+[data-theme='light'] .admin-card__title {
+  color: #0F172A;
+}
+
+.admin-card__subtitle {
+  margin: 3px 0 0 0;
+  font-size: 0.775rem;
+  color: #94A3B8;
+}
+
+[data-theme='light'] .admin-card__subtitle {
+  color: #64748B;
+}
+
+.admin-card__action-link {
+  background: transparent;
+  border: none;
+  color: #C8503D;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+/* Destinations bar chart */
+.admin-destinations-chart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-dest-chart-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 90px;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-dest-chart-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.admin-dest-chart-name {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: #E2E8F0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+[data-theme='light'] .admin-dest-chart-name {
+  color: #1E293B;
+}
+
+.admin-dest-chart-rating {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #F59E0B;
+}
+
+.admin-dest-chart-bar-bg {
+  height: 9px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+[data-theme='light'] .admin-dest-chart-bar-bg {
+  background: #F1F5F9;
+}
+
+.admin-dest-chart-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.admin-dest-chart-views {
+  font-size: 0.75rem;
+  color: #94A3B8;
+  text-align: right;
+  font-family: monospace;
+}
+
+/* SVG Chart wrapper */
+.admin-chart-svg-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admin-chart-svg {
+  width: 100%;
+  height: 140px;
+}
+
+.admin-chart-labels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.725rem;
+  color: #64748B;
+  padding: 0 4px;
+}
+
+.admin-revenue-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 14px;
+}
+
+[data-theme='light'] .admin-revenue-metrics {
+  border-top-color: #F1F5F9;
+}
+
+.admin-metric-pill {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Team mini list */
+.admin-team-mini-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-team-mini-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='light'] .admin-team-mini-item {
+  background: #FAF8F5;
+  border-color: #E8E2D9;
+}
+
+/* Audit mini list */
+.admin-audit-mini-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-audit-mini-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.8rem;
+}
+
+.admin-audit-mini-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
+}

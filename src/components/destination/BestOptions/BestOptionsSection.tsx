@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import type { RecommendationItem, SupportContact } from '../../../types/destinationPage';
 import { OptionCard } from './OptionCard';
 import { ContactSupportCard } from './ContactSupportCard';
+import { EstablishmentModal } from '../../common/EstablishmentModal/EstablishmentModal';
 import './BestOptions.css';
 
 interface BestOptionsSectionProps {
@@ -19,6 +20,7 @@ export const BestOptionsSection: React.FC<BestOptionsSectionProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<string>(initialCategory);
   const [prevCategory, setPrevCategory] = useState<string>(initialCategory);
+  const [selectedEstablishment, setSelectedEstablishment] = useState<RecommendationItem | null>(null);
 
   if (prevCategory !== initialCategory) {
     setPrevCategory(initialCategory);
@@ -82,7 +84,11 @@ export const BestOptionsSection: React.FC<BestOptionsSectionProps> = ({
         <div className="best-options-layout">
           <div className="best-options-cards-grid">
             {filteredItems.map((item) => (
-              <OptionCard key={item.id} item={item} />
+              <OptionCard
+                key={item.id}
+                item={item}
+                onSelect={(selected) => setSelectedEstablishment(selected)}
+              />
             ))}
           </div>
 
@@ -92,6 +98,14 @@ export const BestOptionsSection: React.FC<BestOptionsSectionProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Establishment Modal Sheet */}
+      <EstablishmentModal
+        isOpen={Boolean(selectedEstablishment)}
+        onClose={() => setSelectedEstablishment(null)}
+        item={selectedEstablishment}
+        cityName={cityName}
+      />
     </section>
   );
 };

@@ -164,10 +164,16 @@ export const FeaturedAdCarousel: React.FC<FeaturedAdCarouselProps> = ({ ads }) =
                       href={ctaLink}
                       className="carousel-ad-cta"
                       onClick={(e) => {
-                        if (ctaLink === '#') e.preventDefault();
+                        if (ctaLink.startsWith('#')) {
+                          e.preventDefault();
+                          const target = document.getElementById('best-options-section') || document.querySelector(ctaLink);
+                          if (target) {
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }
+                        }
                       }}
                     >
-                      {ad.ctaText || 'Découvrir'}
+                      {ad.ctaText || 'Demander les disponibilités'}
                       <svg
                         width="16"
                         height="16"

@@ -32,7 +32,6 @@ export const CityFeaturedSection: React.FC<CityFeaturedSectionProps> = ({
             const reviewsCount = exp.reviewsCount ?? 142;
             const description =
               exp.description || exp.metaInfo || 'Une activité immersive au cœur de la tradition marocaine.';
-            const link = exp.link || exp.linkHref || '#';
 
             return (
               <article key={exp.id} className="featured-exp-card">
@@ -81,13 +80,17 @@ export const CityFeaturedSection: React.FC<CityFeaturedSectionProps> = ({
                     </div>
 
                     <a
-                      href={link}
+                      href="#best-options-section"
                       className="featured-exp-btn"
                       onClick={(e) => {
-                        if (link === '#') e.preventDefault();
+                        e.preventDefault();
+                        const target = document.getElementById('best-options-section');
+                        if (target) {
+                          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
                       }}
                     >
-                      Découvrir
+                      <span>Demander les disponibilités</span>
                       <svg
                         width="14"
                         height="14"

@@ -34,6 +34,31 @@
   font-weight: 600;
 }
 
+.navbar__minimal-link--club {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #F7EFE6 !important;
+  font-weight: 600;
+}
+
+.navbar__club-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #D4A373;
+  box-shadow: 0 0 8px #D4A373;
+}
+
+.navbar__minimal-link--club:hover {
+  color: #D4A373 !important;
+}
+
+.navbar__nav-link--club {
+  color: #C8503D !important;
+  font-weight: 600 !important;
+}
+
 .navbar__minimal-sep {
   color: rgba(255, 255, 255, 0.35);
   font-size: 0.95rem;

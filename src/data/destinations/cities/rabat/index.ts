@@ -133,11 +133,11 @@ export const rabatDestination: CityDestination = {
   support: {
     headline: 'Besoin d’aide pour organiser votre séjour à Rabat ?',
     subheadline: 'Notre équipe dédiée répond à toutes vos questions.',
-    whatsappNumber: '+212612345678',
-    whatsappUrl: 'https://wa.me/212612345678',
-    phoneNumber: '+212612345678',
-    phoneDisplay: '+212 6 12 34 56 78',
-    availability: 'Disponible 7j/7 de 8h à 22h',
+    whatsappNumber: '+212600000000',
+    whatsappUrl: 'https://wa.me/212600000000?text=Bonjour,%20je%20souhaite%20des%20conseils%20pour%20visiter%20Rabat',
+    phoneNumber: '+212600000000',
+    phoneDisplay: 'Assistance conciergerie DécouvreLeMaroc',
+    availability: 'Disponible 7j/7 de 9h à 20h',
     agentAvatarUrl:
       'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80'
   },
@@ -146,7 +146,7 @@ export const rabatDestination: CityDestination = {
       id: 'rtrust-1',
       icon: 'palmtree',
       title: 'Capitale royale',
-      description: 'Sécurité et raffinement culturel'
+      description: 'Atmosphère paisible et raffinement culturel'
     },
     {
       id: 'rtrust-2',
@@ -157,14 +157,14 @@ export const rabatDestination: CityDestination = {
     {
       id: 'rtrust-3',
       icon: 'shield-check',
-      title: 'Partenaires certifiés',
-      description: 'Sélection rigoureuse des établissements'
+      title: 'Sélection d’adresses vérifiées',
+      description: 'Hôtels de standing et restaurants recommandés'
     },
     {
       id: 'rtrust-4',
       icon: 'users',
       title: 'Conseils personnalisés',
-      description: 'Équipe locale à votre écoute'
+      description: 'Équipe locale à votre écoute pour vos itinéraires'
     }
   ]
 };

@@ -4,9 +4,10 @@ import './OptionCard.css';
 
 interface OptionCardProps {
   item: RecommendationItem;
+  onSelect?: (item: RecommendationItem) => void;
 }
 
-export const OptionCard: React.FC<OptionCardProps> = ({ item }) => {
+export const OptionCard: React.FC<OptionCardProps> = ({ item, onSelect }) => {
   const [isFavorite, setIsFavorite] = useState(item.isFavorite || false);
 
   const title = item.title || item.name;
@@ -20,17 +21,37 @@ export const OptionCard: React.FC<OptionCardProps> = ({ item }) => {
     apartments: 'Appartement & Villa',
   };
 
+  const ctaLabel =
+    item.category === 'hotels' || item.category === 'apartments' || item.category === 'cars'
+      ? 'Demander les disponibilités'
+      : 'Contacter l’établissement';
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onSelect) {
+      onSelect(item);
+    }
+  };
+
   return (
-    <article className="option-card" aria-label={title}>
+    <article
+      className="option-card"
+      aria-label={title}
+      onClick={handleClick}
+      style={{ cursor: 'pointer' }}
+    >
       <div className="option-card-image-wrap">
-        <img src={item.imageUrl} alt={title} className="option-card-image" />
+        <img src={item.imageUrl} alt={title} className="option-card-image" loading="lazy" />
         <span className="option-card-category-badge">
           {categoryLabels[item.category] || item.category}
         </span>
         <button
           type="button"
           className={`option-card-fav-btn ${isFavorite ? 'favorited' : ''}`}
-          onClick={() => setIsFavorite(!isFavorite)}
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsFavorite(!isFavorite);
+          }}
           aria-label={isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}
         >
           <svg
@@ -95,18 +116,19 @@ export const OptionCard: React.FC<OptionCardProps> = ({ item }) => {
               >
                 <polyline points="20 6 9 17 4 12" />
               </svg>
-              <span>Sélection certifiée</span>
+              <span>Adresse vérifiée</span>
             </span>
           </div>
 
-          <a
-            href={item.link || '#'}
+          <button
+            type="button"
             className="option-cta-btn"
             onClick={(e) => {
-              if ((item.link || '#') === '#') e.preventDefault();
+              e.stopPropagation();
+              if (onSelect) onSelect(item);
             }}
           >
-            Découvrir
+            <span>{ctaLabel}</span>
             <svg
               width="14"
               height="14"
@@ -118,7 +140,7 @@ export const OptionCard: React.FC<OptionCardProps> = ({ item }) => {
             >
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-          </a>
+          </button>
         </div>
       </div>
     </article>

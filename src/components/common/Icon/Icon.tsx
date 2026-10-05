@@ -19,10 +19,16 @@ import {
   AlertCircle,
   Sun,
   Image as ImageIcon,
-  Sparkles,
   ShieldCheck,
   Phone,
-  Heart
+  Heart,
+  Gift,
+  Tag,
+  Compass,
+  Mail,
+  Clock,
+  Crown,
+  Award
 } from 'lucide-react';
 
 export type IconName =
@@ -45,10 +51,16 @@ export type IconName =
   | 'alert'
   | 'sun'
   | 'image'
-  | 'sparkles'
   | 'shield-check'
   | 'phone'
-  | 'heart';
+  | 'heart'
+  | 'gift'
+  | 'tag'
+  | 'compass'
+  | 'mail'
+  | 'clock'
+  | 'crown'
+  | 'award';
 
 interface IconProps {
   name: IconName;
@@ -112,14 +124,26 @@ export const Icon: React.FC<IconProps> = ({
       return <Sun {...iconProps} />;
     case 'image':
       return <ImageIcon {...iconProps} />;
-    case 'sparkles':
-      return <Sparkles {...iconProps} />;
     case 'shield-check':
       return <ShieldCheck {...iconProps} />;
     case 'phone':
       return <Phone {...iconProps} />;
     case 'heart':
       return <Heart {...iconProps} />;
+    case 'gift':
+      return <Gift {...iconProps} />;
+    case 'tag':
+      return <Tag {...iconProps} />;
+    case 'compass':
+      return <Compass {...iconProps} />;
+    case 'mail':
+      return <Mail {...iconProps} />;
+    case 'clock':
+      return <Clock {...iconProps} />;
+    case 'crown':
+      return <Crown {...iconProps} />;
+    case 'award':
+      return <Award {...iconProps} />;
     default:
       return null;
   }

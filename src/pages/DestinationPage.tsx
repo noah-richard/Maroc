@@ -27,7 +27,7 @@ export const DestinationPage: React.FC = () => {
   // Dynamic document title and meta tag updates
   useEffect(() => {
     if (destination) {
-      document.title = `${destination.name} — Guide de voyage & Réservations | DecouvreLeMaroc`;
+      document.title = `${destination.name} — Guide de voyage & Bonnes adresses | DécouvreLeMaroc`;
 
       let metaDesc = document.querySelector('meta[name="description"]');
       if (!metaDesc) {

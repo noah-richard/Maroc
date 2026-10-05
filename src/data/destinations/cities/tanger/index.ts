@@ -121,11 +121,11 @@ export const tangerDestination: CityDestination = {
   support: {
     headline: 'Besoin d’aide pour organiser votre séjour à Tanger ?',
     subheadline: 'Nos conseillers vous répondent pour préparer votre escapade au détroit.',
-    whatsappNumber: '+212612345678',
-    whatsappUrl: 'https://wa.me/212612345678',
-    phoneNumber: '+212612345678',
-    phoneDisplay: '+212 6 12 34 56 78',
-    availability: 'Disponible 7j/7 de 8h à 22h',
+    whatsappNumber: '+212600000000',
+    whatsappUrl: 'https://wa.me/212600000000?text=Bonjour,%20je%20souhaite%20des%20conseils%20pour%20visiter%20Tanger',
+    phoneNumber: '+212600000000',
+    phoneDisplay: 'Assistance conciergerie DécouvreLeMaroc',
+    availability: 'Disponible 7j/7 de 9h à 20h',
     agentAvatarUrl:
       'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80'
   },
@@ -133,26 +133,26 @@ export const tangerDestination: CityDestination = {
     {
       id: 'ttrust-1',
       icon: 'palmtree',
-      title: 'Porte de l’Afrique',
+      title: 'Porte du Maroc & de l’Afrique',
       description: 'Cosmopolite, vibrante et inspirante'
     },
     {
       id: 'ttrust-2',
       icon: 'heart',
       title: 'Panoramas uniques',
-      description: 'Au carrefour de deux mers'
+      description: 'Au carrefour de l’Atlantique et de la Méditerranée'
     },
     {
       id: 'ttrust-3',
       icon: 'shield-check',
-      title: 'Établissements certifiés',
-      description: 'Qualité et accueil d’exception'
+      title: 'Sélection d’adresses vérifiées',
+      description: 'Hôtels de charme et cafés mythiques recommandés'
     },
     {
       id: 'ttrust-4',
       icon: 'users',
-      title: 'Assistance dédiée',
-      description: 'Support disponible 7j/7'
+      title: 'Conseils personnalisés',
+      description: 'Accompagnement local pour votre séjour'
     }
   ]
 };

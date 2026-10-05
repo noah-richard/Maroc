@@ -133,11 +133,11 @@ export const casablancaDestination: CityDestination = {
   support: {
     headline: 'Besoin d’aide pour organiser votre séjour à Casablanca ?',
     subheadline: 'Notre équipe vous accompagne pour un séjour professionnel ou touristique.',
-    whatsappNumber: '+212612345678',
-    whatsappUrl: 'https://wa.me/212612345678',
-    phoneNumber: '+212612345678',
-    phoneDisplay: '+212 6 12 34 56 78',
-    availability: 'Disponible 7j/7 de 8h à 22h',
+    whatsappNumber: '+212600000000',
+    whatsappUrl: 'https://wa.me/212600000000?text=Bonjour,%20je%20souhaite%20des%20conseils%20pour%20mon%20voyage%20%C3%A0%20Casablanca',
+    phoneNumber: '+212600000000',
+    phoneDisplay: 'Assistance conciergerie DécouvreLeMaroc',
+    availability: 'Disponible 7j/7 de 9h à 20h',
     agentAvatarUrl:
       'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80'
   },
@@ -146,25 +146,25 @@ export const casablancaDestination: CityDestination = {
       id: 'ctrust-1',
       icon: 'palmtree',
       title: 'Métropole dynamique',
-      description: 'Le cœur battant de l’économie marocaine'
+      description: 'Le cœur battant de l’économie et de la culture marocaine'
     },
     {
       id: 'ctrust-2',
       icon: 'heart',
       title: 'Expériences océaniques',
-      description: 'Corniches et saveurs maritimes'
+      description: 'Corniches, architecture Art Déco et saveurs maritimes'
     },
     {
       id: 'ctrust-3',
       icon: 'shield-check',
-      title: 'Réservation garantie',
-      description: 'Annulation flexible selon établissements'
+      title: 'Sélection d’adresses vérifiées',
+      description: 'Hôtels d’affaires et tables recommandés'
     },
     {
       id: 'ctrust-4',
       icon: 'users',
-      title: 'Avis vérifiés',
-      description: 'Retours de voyageurs réels'
+      title: 'Conseils personnalisés',
+      description: 'Accompagnement dédié pour votre séjour'
     }
   ]
 };

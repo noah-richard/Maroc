@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { DestinationCard } from './DestinationCard';
 import {
   COASTAL_DESTINATIONS,
   INLAND_DESTINATIONS,
   type HomeDestination
 } from '../../data/destinations.data';
+import { getCustomCityDestinations } from '../../data/dynamicDestinations';
 import heroCoastalBg from '../../assets/hero-coastal.jpg';
 import heroAtlasBg from '../../assets/hero-atlas.jpg';
 import './MoroccoHero.css';
@@ -16,8 +17,89 @@ interface MoroccoHeroProps {
 }
 
 export const MoroccoHero: React.FC<MoroccoHeroProps> = ({ onSelectDestination }) => {
+  // Read live platform config if updated by admin in CMS
+  const platformConfig = useMemo(() => {
+    try {
+      const raw = localStorage.getItem('dlm_platform_config_v2');
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  }, []);
+
+  // Merge custom cities added by admins
+  const { coastalCities, inlandCities } = useMemo(() => {
+    const customCitiesMap = getCustomCityDestinations();
+    const customCities = Object.values(customCitiesMap);
+
+    const customCoastal: HomeDestination[] = customCities
+      .filter(c => c.quickInfo?.location?.toLowerCase().includes('maritime') || c.heroBadge?.toLowerCase().includes('atlantique'))
+      .map(c => ({
+        id: `dest-${c.slug}`,
+        name: c.name,
+        slug: c.slug,
+        region: 'coastal' as const,
+        image: c.heroImageUrl,
+        altText: `${c.name} — ${c.heroBadge || 'Maroc'}`
+      }));
+
+    const customInland: HomeDestination[] = customCities
+      .filter(c => !c.quickInfo?.location?.toLowerCase().includes('maritime') && !c.heroBadge?.toLowerCase().includes('atlantique'))
+      .map(c => ({
+        id: `dest-${c.slug}`,
+        name: c.name,
+        slug: c.slug,
+        region: 'inland' as const,
+        image: c.heroImageUrl,
+        altText: `${c.name} — ${c.heroBadge || 'Maroc'}`
+      }));
+
+    // Merge without duplicates by slug
+    const mergedCoastal = [...COASTAL_DESTINATIONS];
+    for (const c of customCoastal) {
+      if (!mergedCoastal.some(existing => existing.slug === c.slug)) {
+        mergedCoastal.push(c);
+      }
+    }
+
+    const mergedInland = [...INLAND_DESTINATIONS];
+    for (const c of customInland) {
+      if (!mergedInland.some(existing => existing.slug === c.slug)) {
+        mergedInland.push(c);
+      }
+    }
+
+    return {
+      coastalCities: mergedCoastal,
+      inlandCities: mergedInland
+    };
+  }, []);
+
+
+  const heroTitle = platformConfig?.heroTitle || 'Découvre le Maroc';
+  const heroSubtitle = platformConfig?.heroSubtitle || 'Un royaume. Une histoire. Un voyage.';
+  const heroMicroSignature = platformConfig?.heroMicroSignature || "TERRES D'ÉMOTIONS";
+  const heroOceanQuote = platformConfig?.heroOceanQuote || "« Là où l'océan révèle la beauté du Maroc »";
+  const heroAtlasQuote = platformConfig?.heroAtlasQuote || "« Des montagnes majestueuses aux villes impériales »";
+  const heroSignature = platformConfig?.heroSignature || 'Le Maroc vous attend...';
+
   return (
     <section className="morocco-hero" aria-label="Découvre le Maroc — Immersion et Destinations">
+      {/* Announcement bar if active */}
+      {platformConfig?.announcementActive && (
+        <div className="w-full bg-gradient-to-r from-amber-600/90 via-primary/90 to-amber-700/90 text-white text-xs py-2 px-4 text-center font-medium shadow-md flex items-center justify-center gap-3">
+          <span>{platformConfig.announcementText}</span>
+          {platformConfig.announcementCtaText && (
+            <a
+              href={platformConfig.announcementCtaLink || '/club'}
+              className="px-2.5 py-0.5 rounded-full bg-white/20 text-white hover:bg-white/30 text-[11px] font-bold"
+            >
+              {platformConfig.announcementCtaText} →
+            </a>
+          )}
+        </div>
+      )}
+
       {/* 01. SPLIT DUAL CINEMATIC BACKGROUNDS */}
       <div className="morocco-hero__backgrounds" aria-hidden="true">
         {/* Left Side: Univers Océan */}
@@ -43,9 +125,9 @@ export const MoroccoHero: React.FC<MoroccoHeroProps> = ({ onSelectDestination })
       <div className="morocco-hero__content">
         {/* TOP CENTRAL EDITORIAL HEADLINE */}
         <div className="morocco-hero__center-header">
-          <span className="morocco-hero__micro-signature">TERRES D'ÉMOTIONS</span>
-          <h1 className="morocco-hero__title font-serif">Découvre le Maroc</h1>
-          <p className="morocco-hero__subtitle font-serif">Un royaume. Une histoire. Un voyage.</p>
+          <span className="morocco-hero__micro-signature">{heroMicroSignature}</span>
+          <h1 className="morocco-hero__title font-serif">{heroTitle}</h1>
+          <p className="morocco-hero__subtitle font-serif">{heroSubtitle}</p>
           
           {/* Moroccan Star Emblem & Delicate Dividers */}
           <div className="morocco-hero__emblem" aria-hidden="true">
@@ -75,7 +157,7 @@ export const MoroccoHero: React.FC<MoroccoHeroProps> = ({ onSelectDestination })
           <div className="morocco-hero__universe morocco-hero__universe--ocean">
             {/* Poetic quote */}
             <p className="morocco-hero__quote font-script">
-              « Là où l'océan révèle la beauté du Maroc »
+              {heroOceanQuote}
             </p>
 
             {/* Category tag */}
@@ -84,12 +166,12 @@ export const MoroccoHero: React.FC<MoroccoHeroProps> = ({ onSelectDestination })
                 <path d="M2 10c3-3 5 3 8 0s5 3 8 0 4-3 4-3" strokeWidth="1.6" strokeLinecap="round" />
                 <path d="M2 14c3-3 5 3 8 0s5 3 8 0 4-3 4-3" strokeWidth="1.6" strokeLinecap="round" />
               </svg>
-              <span>VILLES CÔTIÈRES</span>
+              <span>VILLES CÔTIÈRES ({coastalCities.length})</span>
             </div>
 
             {/* 2x2 Cities Grid */}
             <div className="morocco-hero__cards-grid">
-              {COASTAL_DESTINATIONS.map((city: HomeDestination) => (
+              {coastalCities.map((city: HomeDestination) => (
                 <DestinationCard
                   key={city.id}
                   destination={city}
@@ -103,7 +185,7 @@ export const MoroccoHero: React.FC<MoroccoHeroProps> = ({ onSelectDestination })
           <div className="morocco-hero__universe morocco-hero__universe--atlas">
             {/* Poetic quote */}
             <p className="morocco-hero__quote font-script">
-              « Des montagnes majestueuses aux villes impériales »
+              {heroAtlasQuote}
             </p>
 
             {/* Category tag */}
@@ -111,12 +193,12 @@ export const MoroccoHero: React.FC<MoroccoHeroProps> = ({ onSelectDestination })
               <svg className="morocco-hero__tag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path d="M3 18l6-10 4 6 3-4 5 8H3z" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              <span>VILLES INTÉRIEURES</span>
+              <span>VILLES INTÉRIEURES ({inlandCities.length})</span>
             </div>
 
             {/* 2x2 Cities Grid */}
             <div className="morocco-hero__cards-grid">
-              {INLAND_DESTINATIONS.map((city: HomeDestination) => (
+              {inlandCities.map((city: HomeDestination) => (
                 <DestinationCard
                   key={city.id}
                   destination={city}
@@ -127,7 +209,7 @@ export const MoroccoHero: React.FC<MoroccoHeroProps> = ({ onSelectDestination })
 
             {/* Bottom Right Poetic Signature */}
             <div className="morocco-hero__signature font-script" aria-hidden="true">
-              Le Maroc vous attend...
+              {heroSignature}
             </div>
           </div>
         </div>
@@ -135,3 +217,4 @@ export const MoroccoHero: React.FC<MoroccoHeroProps> = ({ onSelectDestination })
     </section>
   );
 };
+

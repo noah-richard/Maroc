@@ -172,11 +172,11 @@ export const marrakechDestination: CityDestination = {
   support: {
     headline: 'Besoin d’aide pour organiser votre séjour à Marrakech ?',
     subheadline: 'Notre équipe vous accompagne pour un voyage sur mesure.',
-    whatsappNumber: '+212612345678',
-    whatsappUrl: 'https://wa.me/212612345678?text=Bonjour,%20je%20souhaite%20organiser%20mon%20voyage%20%C3%A0%20Marrakech',
-    phoneNumber: '+212612345678',
-    phoneDisplay: '+212 6 12 34 56 78',
-    availability: 'Disponible 7j/7 de 8h à 22h',
+    whatsappNumber: '+212600000000',
+    whatsappUrl: 'https://wa.me/212600000000?text=Bonjour,%20je%20souhaite%20des%20conseils%20pour%20organiser%20mon%20voyage%20%C3%A0%20Marrakech',
+    phoneNumber: '+212600000000',
+    phoneDisplay: 'Assistance conciergerie DécouvreLeMaroc',
+    availability: 'Disponible 7j/7 de 9h à 20h',
     agentAvatarUrl:
       'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80'
   },
@@ -185,25 +185,25 @@ export const marrakechDestination: CityDestination = {
       id: 'trust-1',
       icon: 'palmtree',
       title: 'Une ville d’exception',
-      description: 'Patrimoine, culture et modernité'
+      description: 'Patrimoine impérial, jardins et douceur de vivre'
     },
     {
       id: 'trust-2',
       icon: 'heart',
-      title: 'Des expériences uniques',
-      description: 'Pour tous les voyageurs'
+      title: 'Des expériences authentiques',
+      description: 'Riads de charme et gastronomie du terroir'
     },
     {
       id: 'trust-3',
       icon: 'shield-check',
-      title: 'Réservation en toute confiance',
-      description: 'Service client 7j/7'
+      title: 'Adresses sélectionnées',
+      description: 'Établissements repérés pour leur qualité d’accueil'
     },
     {
       id: 'trust-4',
       icon: 'users',
-      title: 'Une communauté de voyageurs',
-      description: 'Des milliers d’avis vérifiés'
+      title: 'Conseils personnalisés',
+      description: 'Recommandations adaptées à votre séjour'
     }
   ]
 };

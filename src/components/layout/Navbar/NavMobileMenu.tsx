@@ -84,9 +84,17 @@ export const NavMobileMenu: React.FC<NavMobileMenuProps> = ({
               </Link>
             </li>
             <li>
+              <Link to="/club" onClick={onClose}>
+                <div className="navbar__mobile-icon-wrap" style={{ background: '#F7EFE6', color: '#C8503D' }}>
+                  <Icon name="crown" size={18} />
+                </div>
+                <span style={{ fontWeight: 600 }}>Le Club DécouvreLeMaroc</span>
+              </Link>
+            </li>
+            <li>
               <a href="#partenaires" onClick={(e) => onLinkClick(e, 'partenaires')}>
                 <div className="navbar__mobile-icon-wrap">
-                  <Icon name="sparkles" size={18} />
+                  <Icon name="globe" size={18} />
                 </div>
                 <span>À propos</span>
               </a>
@@ -100,6 +108,7 @@ export const NavMobileMenu: React.FC<NavMobileMenuProps> = ({
               </a>
             </li>
           </ul>
+
 
           <div className="navbar__mobile-divider" />
 

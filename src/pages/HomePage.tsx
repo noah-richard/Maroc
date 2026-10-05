@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar/Navbar';
 import { MoroccoHero } from '../components/hero/MoroccoHero';
+import { ClubSection } from '../components/club/ClubSection';
 import { PartnersSection } from '../components/partners/PartnersSection';
 import { Footer } from '../components/layout/Footer/Footer';
 import { AuthModal } from '../components/common/AuthModal/AuthModal';
@@ -36,6 +37,9 @@ export const HomePage: React.FC = () => {
       <main id="main-content">
         {/* CINEMATIC HERO: OCÉAN VS ATLAS WITH DIAGONAL SPLIT */}
         <MoroccoHero onSelectDestination={handleSelectDestination} />
+
+        {/* LE CLUB DÉCOUVRELEMAROC SECTION */}
+        <ClubSection />
 
         {/* REFINED PARTNERS SECTION ON IVORY BACKGROUND */}
         <div id="partenaires">

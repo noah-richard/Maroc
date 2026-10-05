@@ -22,6 +22,14 @@ export const NavLinks: React.FC<NavLinksProps> = ({
       <div className="navbar__minimal-right">
         <nav className="navbar__minimal-nav" aria-label="Navigation principale">
           <a
+            href="#club"
+            className="navbar__minimal-link navbar__minimal-link--club"
+            onClick={(e) => onLinkClick(e, 'club')}
+          >
+            <span className="navbar__club-dot" aria-hidden="true" />
+            Le Club
+          </a>
+          <a
             href="#partenaires"
             className="navbar__minimal-link"
             onClick={(e) => onLinkClick(e, 'partenaires')}
@@ -46,7 +54,7 @@ export const NavLinks: React.FC<NavLinksProps> = ({
             className="navbar__lang-btn navbar__lang-btn--minimal"
             aria-label="Sélectionner la langue (Français)"
           >
-            <span className="navbar__flag" aria-hidden="true">🇫🇷</span>
+            <Icon name="globe" size={14} />
             <span className="navbar__lang-text">FR</span>
             <Icon name="chevron-down" size={13} />
           </button>
@@ -101,6 +109,11 @@ export const NavLinks: React.FC<NavLinksProps> = ({
           <li>
             <a href="#voitures" className="navbar__nav-link" onClick={(e) => onLinkClick(e, 'voitures')}>
               Voitures
+            </a>
+          </li>
+          <li>
+            <a href="#club" className="navbar__nav-link navbar__nav-link--club" onClick={(e) => onLinkClick(e, 'club')}>
+              Le Club
             </a>
           </li>
           <li>

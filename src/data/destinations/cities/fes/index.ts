@@ -121,11 +121,11 @@ export const fesDestination: CityDestination = {
   support: {
     headline: 'Besoin d’aide pour organiser votre séjour à Fès ?',
     subheadline: 'Notre équipe locale vous oriente vers les guides certifiés.',
-    whatsappNumber: '+212612345678',
-    whatsappUrl: 'https://wa.me/212612345678',
-    phoneNumber: '+212612345678',
-    phoneDisplay: '+212 6 12 34 56 78',
-    availability: 'Disponible 7j/7 de 8h à 22h',
+    whatsappNumber: '+212600000000',
+    whatsappUrl: 'https://wa.me/212600000000?text=Bonjour,%20je%20souhaite%20des%20conseils%20pour%20visiter%20F%C3%A8s',
+    phoneNumber: '+212600000000',
+    phoneDisplay: 'Assistance conciergerie DécouvreLeMaroc',
+    availability: 'Disponible 7j/7 de 9h à 20h',
     agentAvatarUrl:
       'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80'
   },
@@ -134,25 +134,25 @@ export const fesDestination: CityDestination = {
       id: 'ftrust-1',
       icon: 'palmtree',
       title: 'Patrimoine millénaire',
-      description: 'La plus vaste médina médiévale vivante'
+      description: 'La plus vaste médina médiévale vivante au monde'
     },
     {
       id: 'ftrust-2',
       icon: 'heart',
       title: 'Artisanat d’or et de cuir',
-      description: 'Des ateliers ancestraux authentiques'
+      description: 'Des tanneries et ateliers ancestraux authentiques'
     },
     {
       id: 'ftrust-3',
       icon: 'shield-check',
-      title: 'Guides certifiés',
-      description: 'Visites recommandées par l’Office du Tourisme'
+      title: 'Riads d’exception',
+      description: 'Demeures historiques restaurées dans les règles de l’art'
     },
     {
       id: 'ftrust-4',
       icon: 'users',
-      title: 'Avis de passionnés',
-      description: 'Conseils pour explorer les ruelles'
+      title: 'Conseils personnalisés',
+      description: 'Orientation dédiée pour vous repérer en médina'
     }
   ]
 };
