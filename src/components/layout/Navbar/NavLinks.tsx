@@ -34,13 +34,12 @@ export const NavLinks: React.FC<NavLinksProps> = ({
           >
             À propos
           </Link>
-          <a
-            href="#partenaires"
+          <Link
+            to="/devenir-partenaire"
             className="navbar__minimal-link navbar__minimal-link--partner"
-            onClick={(e) => onLinkClick(e, 'partenaires')}
           >
             Devenir partenaire
-          </a>
+          </Link>
         </nav>
 
         <span className="navbar__minimal-sep" aria-hidden="true">|</span>
@@ -108,9 +107,9 @@ export const NavLinks: React.FC<NavLinksProps> = ({
             </Link>
           </li>
           <li>
-            <a href="#partenaires" className="navbar__nav-link" onClick={(e) => onLinkClick(e, 'partenaires')}>
+            <Link to="/devenir-partenaire" className="navbar__nav-link navbar__nav-link--partner">
               Devenir partenaire
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

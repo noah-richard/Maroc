@@ -12,7 +12,7 @@ interface NavMobileMenuProps {
 export const NavMobileMenu: React.FC<NavMobileMenuProps> = ({
   isOpen,
   onClose,
-  onLinkClick
+  onLinkClick: _onLinkClick
 }) => {
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -98,12 +98,12 @@ export const NavMobileMenu: React.FC<NavMobileMenuProps> = ({
               </Link>
             </li>
             <li>
-              <a href="#partenaires" onClick={(e) => onLinkClick(e, 'partenaires')}>
-                <div className="navbar__mobile-icon-wrap">
-                  <Icon name="star" size={18} />
+              <Link to="/devenir-partenaire" onClick={onClose}>
+                <div className="navbar__mobile-icon-wrap" style={{ background: '#F7EFE6', color: '#C8503D' }}>
+                  <Icon name="award" size={18} />
                 </div>
                 <span>Devenir partenaire</span>
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
