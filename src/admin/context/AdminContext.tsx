@@ -196,7 +196,17 @@ export const AdminProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [pages, setPages] = useState<CustomPage[]>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.PAGES);
-      return saved ? JSON.parse(saved) : INITIAL_PAGES;
+      if (saved) {
+        const parsed: CustomPage[] = JSON.parse(saved);
+        const merged = [...parsed];
+        for (const init of INITIAL_PAGES) {
+          if (!merged.some(p => p.slug === init.slug)) {
+            merged.push(init);
+          }
+        }
+        return merged;
+      }
+      return INITIAL_PAGES;
     } catch {
       return INITIAL_PAGES;
     }

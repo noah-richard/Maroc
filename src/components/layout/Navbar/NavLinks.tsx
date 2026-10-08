@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Icon } from '../../common/Icon/Icon';
 import './NavLinks.css';
 
@@ -27,13 +28,12 @@ export const NavLinks: React.FC<NavLinksProps> = ({
             <span className="navbar__club-dot" aria-hidden="true" />
             Le Club
           </a>
-          <a
-            href="#partenaires"
+          <Link
+            to="/a-propos"
             className="navbar__minimal-link"
-            onClick={(e) => onLinkClick(e, 'partenaires')}
           >
             À propos
-          </a>
+          </Link>
           <a
             href="#partenaires"
             className="navbar__minimal-link navbar__minimal-link--partner"
@@ -103,9 +103,9 @@ export const NavLinks: React.FC<NavLinksProps> = ({
             </a>
           </li>
           <li>
-            <a href="#partenaires" className="navbar__nav-link" onClick={(e) => onLinkClick(e, 'partenaires')}>
+            <Link to="/a-propos" className="navbar__nav-link">
               À propos
-            </a>
+            </Link>
           </li>
           <li>
             <a href="#partenaires" className="navbar__nav-link" onClick={(e) => onLinkClick(e, 'partenaires')}>

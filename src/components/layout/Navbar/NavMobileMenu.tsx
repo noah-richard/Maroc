@@ -90,12 +90,12 @@ export const NavMobileMenu: React.FC<NavMobileMenuProps> = ({
               </Link>
             </li>
             <li>
-              <a href="#partenaires" onClick={(e) => onLinkClick(e, 'partenaires')}>
+              <Link to="/a-propos" onClick={onClose}>
                 <div className="navbar__mobile-icon-wrap">
                   <Icon name="globe" size={18} />
                 </div>
                 <span>À propos</span>
-              </a>
+              </Link>
             </li>
             <li>
               <a href="#partenaires" onClick={(e) => onLinkClick(e, 'partenaires')}>

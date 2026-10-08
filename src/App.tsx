@@ -18,6 +18,8 @@ export const App: React.FC = () => {
         <Route path="/destination/:slug" element={<Navigate to="/destinations/:slug" replace />} />
         <Route path="/p/:slug" element={<CustomPageView />} />
         <Route path="/page/:slug" element={<CustomPageView />} />
+        <Route path="/a-propos" element={<CustomPageView fixedSlug="a-propos" />} />
+        <Route path="/mentions-legales" element={<CustomPageView fixedSlug="mentions-legales" />} />
         <Route path="/admin" element={<AdminDashboardPage />} />
         <Route path="/admin/:tab" element={<AdminDashboardPage />} />
         <Route path="*" element={<DestinationPage />} />

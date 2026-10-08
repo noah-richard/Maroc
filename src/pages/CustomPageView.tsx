@@ -17,21 +17,36 @@ import {
 
 import './CustomPageView.css';
 
-export const CustomPageView: React.FC = () => {
-  const { slug } = useParams<{ slug: string }>();
+interface CustomPageViewProps {
+  fixedSlug?: string;
+}
+
+export const CustomPageView: React.FC<CustomPageViewProps> = ({ fixedSlug }) => {
+  const params = useParams<{ slug: string }>();
+  const slug = fixedSlug || params.slug;
 
   // Fetch page from localStorage or fallback
   const getPage = (): CustomPage | undefined => {
     try {
       const raw = localStorage.getItem('dlm_admin_pages_v2');
-      const pages: CustomPage[] = raw ? JSON.parse(raw) : INITIAL_PAGES;
-      return pages.find(p => p.slug === slug);
+      if (raw) {
+        const stored: CustomPage[] = JSON.parse(raw);
+        const merged = [...stored];
+        for (const init of INITIAL_PAGES) {
+          if (!merged.some(p => p.slug === init.slug)) {
+            merged.push(init);
+          }
+        }
+        return merged.find(p => p.slug === slug);
+      }
+      return INITIAL_PAGES.find(p => p.slug === slug);
     } catch {
       return INITIAL_PAGES.find(p => p.slug === slug);
     }
   };
 
   const page = getPage();
+
 
   useEffect(() => {
     if (page) {
@@ -76,6 +91,16 @@ export const CustomPageView: React.FC = () => {
   // Split content by paragraphs
   const paragraphs = page.content.split('\n\n').filter(Boolean);
 
+  const renderFormattedText = (text: string) => {
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+    return parts.map((part, i) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={i}>{part.slice(2, -2)}</strong>;
+      }
+      return part;
+    });
+  };
+
   return (
     <div className="custom-page-container">
       <Navbar variant="minimal" />
@@ -86,7 +111,7 @@ export const CustomPageView: React.FC = () => {
           <div className="custom-page-breadcrumb">
             <Link to="/">Accueil</Link>
             <ChevronRight size={14} />
-            <span>Guides & Articles</span>
+            <span>Guides & Pages</span>
             <ChevronRight size={14} />
             <span className="text-white">{page.title}</span>
           </div>
@@ -160,13 +185,44 @@ export const CustomPageView: React.FC = () => {
                     </h3>
                   );
                 }
+                if (p.includes('\n- ') || p.startsWith('- ')) {
+                  const lines = p.split('\n');
+                  const normalLines: string[] = [];
+                  const bulletLines: string[] = [];
+                  lines.forEach(l => {
+                    if (l.trim().startsWith('- ')) {
+                      bulletLines.push(l.trim().slice(2));
+                    } else if (l.trim()) {
+                      normalLines.push(l);
+                    }
+                  });
+                  return (
+                    <div key={idx} className="flex flex-col gap-2">
+                      {normalLines.length > 0 && (
+                        <p className="custom-page-p">
+                          {renderFormattedText(normalLines.join(' '))}
+                        </p>
+                      )}
+                      {bulletLines.length > 0 && (
+                        <ul className="custom-page-ul">
+                          {bulletLines.map((b, bIdx) => (
+                            <li key={bIdx} className="custom-page-li">
+                              {renderFormattedText(b)}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  );
+                }
                 return (
                   <p key={idx} className="custom-page-p">
-                    {p}
+                    {renderFormattedText(p)}
                   </p>
                 );
               })}
             </div>
+
 
             {/* Call to Action Box */}
             {page.ctaText && (

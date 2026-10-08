@@ -49,14 +49,11 @@ export const Footer: React.FC = () => {
             <div className="footer__col">
               <h4 className="footer__col-title">Assistance</h4>
               <ul className="footer__list">
-                <li><a href="#partenaires">À propos</a></li>
+                <li><a href="/a-propos">À propos</a></li>
                 <li><a href="#partenaires">Devenir partenaire</a></li>
-                <li><a href="#contact">Centre d'aide</a></li>
-                <li><a href="#conditions">Conditions générales</a></li>
-                <li><a href="#confidentialite">Politique de confidentialité</a></li>
-                <li><a href="#mentions">Mentions légales</a></li>
+                <li><a href="/p/faq-voyageurs">Centre d'aide & FAQ</a></li>
+                <li><a href="/mentions-legales">Mentions légales & Confidentialité</a></li>
               </ul>
-
             </div>
           </div>
         </div>
