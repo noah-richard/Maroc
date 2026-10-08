@@ -267,12 +267,17 @@
   background: #FFFFFF;
   border: 1px solid #E8E2D9;
   border-radius: 16px;
-  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
   box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
 }
 
 .admin-table {
   width: 100%;
+  min-width: 780px;
   border-collapse: collapse;
   text-align: left;
   font-size: 0.875rem;
@@ -518,7 +523,7 @@
 /* Cards Grid View */
 .admin-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
   gap: 16px;
 }
 
@@ -615,3 +620,87 @@
   border: 1px dashed #D5CBC0;
   border-radius: 16px;
 }
+
+/* ==========================================================================
+   MOBILE & TABLET RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 768px) {
+  .admin-page-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .admin-page-header__actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .admin-page-header__actions .admin-btn-primary,
+  .admin-page-header__actions .admin-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .admin-page-title {
+    font-size: 1.35rem;
+  }
+
+  .admin-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .admin-filter-search {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .admin-filter-selectors {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .admin-select {
+    width: 100%;
+  }
+
+  .admin-users-kpi-ribbon {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .admin-kpi-item {
+    padding: 14px 16px;
+  }
+
+  .admin-kpi-value {
+    font-size: 1.35rem;
+  }
+
+  .admin-user-card {
+    padding: 16px;
+  }
+
+  .admin-user-card__footer {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-users-kpi-ribbon {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-page-title {
+    font-size: 1.2rem;
+  }
+}
+

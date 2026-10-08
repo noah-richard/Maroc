@@ -121,6 +121,24 @@ export const AdminAdvertisingPage: React.FC = () => {
         </div>
       </div>
 
+      {/* Info Callout */}
+      <div className="admin-cms-callout">
+        <div className="flex items-center gap-3">
+          <Megaphone size={22} className="text-primary shrink-0" />
+          <div className="text-xs">
+            <strong className="font-bold">Régie Publicitaire Intégrée :</strong> Les bannières actives sont injectées dans les pages de destination correspondantes (ou sur toutes les villes si aucune ville n'est spécifiée).
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="admin-chip admin-chip--emerald">
+            {adBanners.filter(b => b.isActive).length} actives
+          </span>
+          <span className="admin-chip">
+            {adBanners.length} campagnes
+          </span>
+        </div>
+      </div>
+
       {/* Filter Bar */}
       <div className="admin-filter-bar">
         <div className="admin-filter-search">
@@ -135,9 +153,20 @@ export const AdminAdvertisingPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Grid of Ads */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filtered.map(ad => (
+      {/* Grid of Ads or Empty State */}
+      {filtered.length === 0 ? (
+        <div className="admin-empty-state">
+          <Megaphone size={40} className="text-slate-400 mb-3" />
+          <h3 className="font-bold text-base text-[#0F2937]">Aucune campagne publicitaire trouvée</h3>
+          <p className="text-xs text-slate-500 mt-1 mb-4">Créez votre première annonce sponsorisée pour valoriser un riad ou partenaire.</p>
+          <button type="button" className="admin-btn-primary" onClick={openCreateModal}>
+            <Plus size={16} />
+            <span>Créer une Campagne Pub</span>
+          </button>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filtered.map(ad => (
           <div
             key={ad.id}
             className={`rounded-2xl border transition-all overflow-hidden flex flex-col justify-between shadow-sm ${
@@ -229,7 +258,8 @@ export const AdminAdvertisingPage: React.FC = () => {
             </div>
           </div>
         ))}
-      </div>
+        </div>
+      )}
 
       {/* Editor Modal */}
       {isModalOpen && (
@@ -258,105 +288,176 @@ export const AdminAdvertisingPage: React.FC = () => {
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-6 space-y-4">
-              <div className="admin-form-grid">
-                <div className="admin-form-group">
-                  <label className="admin-form-label">Titre de la Campagne *</label>
-                  <input
-                    type="text"
-                    className="admin-form-input"
-                    value={title}
-                    onChange={e => setTitle(e.target.value)}
-                    placeholder="ex. Royal Mansour Marrakech"
-                    required
-                  />
+            <form onSubmit={handleSubmit} className="city-modal__form">
+              <div className="city-modal__grid">
+                <div className="city-modal__inputs-col">
+                  <div className="admin-form-grid">
+                    <div className="admin-form-group">
+                      <label className="admin-form-label">Titre de la Campagne *</label>
+                      <input
+                        type="text"
+                        className="admin-form-input"
+                        value={title}
+                        onChange={e => setTitle(e.target.value)}
+                        placeholder="ex. Royal Mansour Marrakech"
+                        required
+                      />
+                    </div>
+
+                    <div className="admin-form-group">
+                      <label className="admin-form-label">Nom de l'Annonceur *</label>
+                      <input
+                        type="text"
+                        className="admin-form-input"
+                        value={advertiser}
+                        onChange={e => setAdvertiser(e.target.value)}
+                        placeholder="ex. Groupe Royal Mansour"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="admin-form-group">
+                    <label className="admin-form-label">Sous-titre / Message Incitatif *</label>
+                    <textarea
+                      rows={2}
+                      className="admin-form-input"
+                      value={subtitle}
+                      onChange={e => setSubtitle(e.target.value)}
+                      placeholder="ex. L'excellence de l'hospitalité marocaine avec accès exclusif au spa pour tout séjour de 3 nuits..."
+                      required
+                    />
+                  </div>
+
+                  <div className="admin-form-grid">
+                    <div className="admin-form-group">
+                      <label className="admin-form-label">Badge Promo (Tag)</label>
+                      <input
+                        type="text"
+                        className="admin-form-input"
+                        value={tag}
+                        onChange={e => setTag(e.target.value)}
+                        placeholder="ex. PRIVILÈGE PARTENAIRE"
+                      />
+                    </div>
+
+                    <div className="admin-form-group">
+                      <label className="admin-form-label">Libellé du Bouton (CTA)</label>
+                      <input
+                        type="text"
+                        className="admin-form-input"
+                        value={ctaText}
+                        onChange={e => setCtaText(e.target.value)}
+                        placeholder="ex. Découvrir l'Offre"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="admin-form-grid">
+                    <div className="admin-form-group">
+                      <label className="admin-form-label">Lien Cible (URL ou interne)</label>
+                      <input
+                        type="text"
+                        className="admin-form-input"
+                        value={linkHref}
+                        onChange={e => setLinkHref(e.target.value)}
+                        placeholder="https://... ou /destinations/marrakech"
+                        required
+                      />
+                    </div>
+
+                    <div className="admin-form-group">
+                      <label className="admin-form-label">Cible Ville (Laisser vide pour toutes)</label>
+                      <input
+                        type="text"
+                        className="admin-form-input"
+                        value={citySlug}
+                        onChange={e => setCitySlug(e.target.value)}
+                        placeholder="ex. marrakech ou dakhla"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="admin-form-group">
+                    <label className="admin-form-label">Image de la Bannière (URL)</label>
+                    <input
+                      type="url"
+                      className="admin-form-input"
+                      value={imageUrl}
+                      onChange={e => setImageUrl(e.target.value)}
+                      placeholder="https://images.unsplash.com/..."
+                      required
+                    />
+                  </div>
+
+                  <div className="admin-form-group">
+                    <label className="admin-toggle-label">
+                      <input
+                        type="checkbox"
+                        checked={isActive}
+                        onChange={e => setIsActive(e.target.checked)}
+                        className="admin-toggle-input"
+                      />
+                      <span className="admin-toggle-slider" />
+                      <span className="admin-toggle-text">
+                        <strong>Campagne Active Immédiatement</strong>
+                        <small className="block text-xs text-slate-500">Injecter la bannière sur les pages publiques</small>
+                      </span>
+                    </label>
+                  </div>
                 </div>
 
-                <div className="admin-form-group">
-                  <label className="admin-form-label">Nom de l'Annonceur *</label>
-                  <input
-                    type="text"
-                    className="admin-form-input"
-                    value={advertiser}
-                    onChange={e => setAdvertiser(e.target.value)}
-                    placeholder="ex. Groupe Royal Mansour"
-                    required
-                  />
+                {/* Right Live Preview Column */}
+                <div className="city-modal__preview-col">
+                  <div className="city-preview-label">
+                    <span>Aperçu de l'Encart Publicitaire</span>
+                  </div>
+
+                  <div className="rounded-2xl border border-[#E8E2D9] overflow-hidden bg-white shadow-sm flex flex-col justify-between">
+                    <div className="relative h-36 w-full overflow-hidden">
+                      <img
+                        src={imageUrl || 'https://images.unsplash.com/photo-1548013146-72479768bada?w=800&auto=format&fit=crop&q=80'}
+                        alt={title || 'Aperçu'}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t" />
+
+                      <span className="absolute top-2.5 left-2.5 text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500 text-slate-950 uppercase tracking-wider">
+                        {tag || 'PARTENAIRE'}
+                      </span>
+
+                      <span className={`absolute top-2.5 right-2.5 text-[10px] px-2 py-0.5 rounded-full font-bold ${
+                        isActive ? 'bg-emerald-600 text-white' : 'bg-slate-800 text-white'
+                      }`}>
+                        {isActive ? 'Active' : 'Pause'}
+                      </span>
+                    </div>
+
+                    <div className="p-4 bg-white">
+                      <div className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">
+                        {advertiser || 'Annonceur'}
+                      </div>
+                      <h4 className="font-serif text-sm font-bold text-slate-900 leading-snug">
+                        {title || 'Titre de la Campagne'}
+                      </h4>
+                      <p className="text-[11px] text-slate-600 mt-1 line-clamp-2">
+                        {subtitle || 'Texte descriptif de votre offre sponsorisée...'}
+                      </p>
+                      <div className="pt-3 mt-3 border-t border-[#E8E2D9] flex items-center justify-between">
+                        <span className="text-xs font-bold text-primary flex items-center gap-1">
+                          <span>{ctaText || 'Découvrir'}</span>
+                          <ExternalLink size={11} />
+                        </span>
+                        {citySlug && (
+                          <span className="text-[10px] text-slate-500 capitalize">
+                            {citySlug}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-
-              <div className="admin-form-group">
-                <label className="admin-form-label">Sous-titre / Message Incitatif *</label>
-                <textarea
-                  rows={2}
-                  className="admin-form-input"
-                  value={subtitle}
-                  onChange={e => setSubtitle(e.target.value)}
-                  placeholder="ex. L'excellence de l'hospitalité marocaine avec accès exclusif au spa pour tout séjour de 3 nuits..."
-                  required
-                />
-              </div>
-
-              <div className="admin-form-grid">
-                <div className="admin-form-group">
-                  <label className="admin-form-label">Badge Promo (Tag)</label>
-                  <input
-                    type="text"
-                    className="admin-form-input"
-                    value={tag}
-                    onChange={e => setTag(e.target.value)}
-                    placeholder="ex. PRIVILÈGE PARTENAIRE"
-                  />
-                </div>
-
-                <div className="admin-form-group">
-                  <label className="admin-form-label">Libellé du Bouton (CTA)</label>
-                  <input
-                    type="text"
-                    className="admin-form-input"
-                    value={ctaText}
-                    onChange={e => setCtaText(e.target.value)}
-                    placeholder="ex. Découvrir l'Offre"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="admin-form-grid">
-                <div className="admin-form-group">
-                  <label className="admin-form-label">Lien Cible (URL ou interne)</label>
-                  <input
-                    type="text"
-                    className="admin-form-input"
-                    value={linkHref}
-                    onChange={e => setLinkHref(e.target.value)}
-                    placeholder="https://... ou /destinations/marrakech"
-                    required
-                  />
-                </div>
-
-                <div className="admin-form-group">
-                  <label className="admin-form-label">Cible Ville (Laisser vide pour toutes)</label>
-                  <input
-                    type="text"
-                    className="admin-form-input"
-                    value={citySlug}
-                    onChange={e => setCitySlug(e.target.value)}
-                    placeholder="ex. marrakech ou dakhla"
-                  />
-                </div>
-              </div>
-
-              <div className="admin-form-group">
-                <label className="admin-form-label">Image de la Bannière (URL)</label>
-                <input
-                  type="url"
-                  className="admin-form-input"
-                  value={imageUrl}
-                  onChange={e => setImageUrl(e.target.value)}
-                  placeholder="https://images.unsplash.com/..."
-                  required
-                />
               </div>
 
               <div className="admin-modal__footer">

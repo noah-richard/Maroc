@@ -32,15 +32,45 @@
   .admin-sidebar {
     position: fixed;
     top: 0;
-    left: -280px;
+    left: -320px;
+    width: 280px;
+    max-width: 85vw;
     z-index: 1000;
     transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 10px 0 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 10px 0 40px rgba(0, 0, 0, 0.25);
   }
 
   .admin-sidebar--mobile-open {
     left: 0 !important;
   }
+
+  .admin-sidebar__collapse-toggle {
+    display: none !important;
+  }
+
+  .admin-sidebar__mobile-close-btn {
+    display: flex !important;
+  }
+}
+
+.admin-sidebar__mobile-close-btn {
+  display: none;
+  background: #FAF8F5;
+  border: 1px solid #E2D9CE;
+  color: #64748B;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.admin-sidebar__mobile-close-btn:hover {
+  background: #FFF1EE;
+  color: #C8503D;
+  border-color: #F8B4A8;
 }
 
 .admin-sidebar__brand {

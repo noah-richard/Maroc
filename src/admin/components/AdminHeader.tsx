@@ -194,7 +194,7 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({ onOpenInviteModal }) =
               <span className="admin-header__user-name">{currentAdmin.name}</span>
               <span className="admin-header__user-dept">{currentAdmin.department}</span>
             </div>
-            <ChevronDown size={14} className="text-slate-400" />
+            <ChevronDown size={14} className="text-slate-400 hidden-mobile" />
           </button>
 
           {isUserMenuOpen && (

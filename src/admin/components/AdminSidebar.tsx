@@ -19,7 +19,8 @@ import {
   Sliders,
   Compass,
   Megaphone,
-  History
+  History,
+  X
 } from 'lucide-react';
 import './AdminSidebar.css';
 
@@ -183,6 +184,15 @@ export const AdminSidebar: React.FC = () => {
             aria-label={isSidebarCollapsed ? 'Déplier le menu' : 'Replier le menu'}
           >
             {isSidebarCollapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
+          </button>
+
+          <button
+            type="button"
+            className="admin-sidebar__mobile-close-btn"
+            onClick={() => setIsMobileSidebarOpen(false)}
+            aria-label="Fermer le menu"
+          >
+            <X size={18} />
           </button>
         </div>
 

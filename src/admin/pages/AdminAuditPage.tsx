@@ -54,6 +54,29 @@ export const AdminAuditPage: React.FC = () => {
         </div>
       </div>
 
+      {/* Info Callout */}
+      <div className="admin-cms-callout mb-6">
+        <div className="flex items-center gap-3">
+          <ShieldCheck size={22} className="text-primary shrink-0" />
+          <div className="text-xs">
+            <strong className="font-bold">Journal d'Audit Immuable :</strong> Chaque connexion, modification tarifaire ou publication de contenu est horodatée avec adresse IP et identifiant pour garantir l'intégrité de la plateforme.
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          {auditLogs.filter(l => l.severity === 'critical').length > 0 && (
+            <span className="admin-chip admin-chip--terracotta">
+              {auditLogs.filter(l => l.severity === 'critical').length} critiques
+            </span>
+          )}
+          <span className="admin-chip admin-chip--emerald">
+            {auditLogs.filter(l => l.severity === 'info').length} normaux
+          </span>
+          <span className="admin-chip">
+            {auditLogs.length} événements
+          </span>
+        </div>
+      </div>
+
       <div className="admin-filter-bar">
         <div className="admin-filter-search">
           <Search size={16} className="text-slate-400" />
@@ -106,8 +129,17 @@ export const AdminAuditPage: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredLogs.map(log => (
-              <tr key={log.id}>
+            {filteredLogs.length === 0 ? (
+              <tr>
+                <td colSpan={6} className="text-center py-12 text-slate-400">
+                  <ShieldCheck size={32} className="mx-auto mb-2 text-slate-400" />
+                  <p className="font-semibold text-sm">Aucun événement d'audit ne correspond aux critères.</p>
+                  <p className="text-xs mt-1">Modifiez vos critères de recherche ou de filtre de gravité.</p>
+                </td>
+              </tr>
+            ) : (
+              filteredLogs.map(log => (
+                <tr key={log.id}>
                 <td>
                   <span
                     className={`inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-full ${
@@ -158,8 +190,9 @@ export const AdminAuditPage: React.FC = () => {
                   </code>
                 </td>
               </tr>
-            ))}
-          </tbody>
+            ))
+          )}
+        </tbody>
         </table>
       </div>
     </div>

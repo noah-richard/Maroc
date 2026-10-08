@@ -274,3 +274,23 @@
   border-color: #CBD5E1;
   color: #334155;
 }
+
+@media (max-width: 640px) {
+  .command-palette-backdrop {
+    padding: 10px;
+    align-items: flex-start;
+  }
+
+  .command-palette-modal {
+    max-height: 85vh;
+  }
+
+  .command-palette__search {
+    padding: 12px 14px;
+  }
+
+  .command-palette__footer {
+    display: none;
+  }
+}
+

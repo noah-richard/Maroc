@@ -164,6 +164,24 @@ export const AdminRecommendationsPage: React.FC = () => {
         </div>
       </div>
 
+      {/* Info Callout */}
+      <div className="admin-cms-callout mb-6">
+        <div className="flex items-center gap-3">
+          <Compass size={22} className="text-primary shrink-0" />
+          <div className="text-xs">
+            <strong className="font-bold">Annuaire Hospitalité & Loisirs :</strong> Ces adresses sont injectées automatiquement dans les sections "Où dormir", "Où manger" et "Que faire" des pages villes avec lien de réservation directe.
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="admin-chip admin-chip--emerald">
+            {recommendations.filter(r => r.isPublished).length} en ligne
+          </span>
+          <span className="admin-chip">
+            {recommendations.length} adresses
+          </span>
+        </div>
+      </div>
+
       {/* Filter Bar */}
       <div className="admin-filter-bar">
         <div className="admin-filter-search">
@@ -218,77 +236,90 @@ export const AdminRecommendationsPage: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {filtered.map(rec => (
-              <tr key={rec.id}>
-                <td>
-                  <div className="flex items-center gap-3">
-                    <img
-                      src={rec.imageUrl}
-                      alt={rec.name}
-                      className="w-12 h-10 rounded-lg object-cover border border-slate-200 shrink-0"
-                    />
-                    <div>
-                      <div className="font-bold text-sm text-slate-900 flex items-center gap-1.5">
-                        <span>{rec.name}</span>
-                        {rec.badge && (
-                          <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 font-bold">
-                            {rec.badge}
-                          </span>
-                        )}
-                      </div>
-                      <div className="text-[11px] text-slate-500 flex items-center gap-1">
-                        <MapPin size={11} className="text-primary" />
-                        <span>{rec.location}</span>
+            {filtered.length === 0 ? (
+              <tr>
+                <td colSpan={7} className="text-center py-12 text-slate-400">
+                  <Compass size={32} className="mx-auto mb-2 text-slate-400" />
+                  <p className="font-semibold text-sm">Aucune adresse ne correspond à votre recherche.</p>
+                  <p className="text-xs mt-1">Modifiez vos filtres de ville ou de catégorie.</p>
+                </td>
+              </tr>
+            ) : (
+              filtered.map(rec => (
+                <tr key={rec.id}>
+                  <td>
+                    <div className="flex items-center gap-3">
+                      <img
+                        src={rec.imageUrl}
+                        alt={rec.name}
+                        className="admin-table-thumb w-12 h-10 rounded-lg object-cover border border-slate-200 shrink-0"
+                      />
+                      <div>
+                        <div className="font-bold text-sm text-slate-900 flex items-center gap-1.5">
+                          <span>{rec.name}</span>
+                          {rec.badge && (
+                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 font-bold">
+                              {rec.badge}
+                            </span>
+                          )}
+                        </div>
+                        <div className="text-[11px] text-slate-500 flex items-center gap-1">
+                          <MapPin size={11} className="text-primary" />
+                          <span>{rec.location}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
+                  </td>
 
-                <td>
-                  <span className="admin-chip capitalize">
-                    {rec.citySlug}
-                  </span>
-                </td>
+                  <td>
+                    <span className="admin-chip capitalize">
+                      {rec.citySlug}
+                    </span>
+                  </td>
 
-                <td>
-                  <div className="flex items-center gap-1.5 text-xs text-slate-700 font-medium">
-                    <span className="text-primary">{CATEGORY_ICONS[rec.category]}</span>
-                    <span>{CATEGORY_LABELS[rec.category]}</span>
-                  </div>
-                </td>
-
-                <td>
-                  {rec.priceStartingFrom ? (
-                    <div className="text-xs font-bold text-slate-900">
-                      dès {rec.priceStartingFrom} {rec.currency || 'MAD'}
-                      <span className="text-[10px] text-slate-500 font-normal"> {rec.pricePeriod}</span>
+                  <td>
+                    <div className="flex items-center gap-1.5 text-xs text-slate-700 font-medium">
+                      <span className="text-primary">{CATEGORY_ICONS[rec.category]}</span>
+                      <span>{CATEGORY_LABELS[rec.category]}</span>
                     </div>
-                  ) : (
-                    <span className="text-xs text-slate-400">—</span>
-                  )}
-                </td>
+                  </td>
 
-                <td>
-                  <div className="flex items-center gap-1 text-xs font-bold text-amber-700">
-                    <Star size={13} fill="#F59E0B" />
-                    <span>{rec.rating}</span>
-                    <span className="text-slate-500 text-[10px]">({rec.reviewsCount})</span>
-                  </div>
-                </td>
+                  <td>
+                    {rec.priceStartingFrom ? (
+                      <div className="text-xs font-bold text-slate-900">
+                        dès {rec.priceStartingFrom} {rec.currency || 'MAD'}
+                        <span className="text-[10px] text-slate-500 font-normal"> {rec.pricePeriod}</span>
+                      </div>
+                    ) : (
+                      <span className="text-xs text-slate-400">—</span>
+                    )}
+                  </td>
 
-                <td>
-                  <button
-                    type="button"
-                    className={`text-xs px-2.5 py-1 rounded-full font-bold transition-all ${
-                      rec.isPublished
-                        ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
-                        : 'bg-slate-100 text-slate-600 border border-slate-200'
-                    }`}
-                    onClick={() => updateRecommendation(rec.id, { isPublished: !rec.isPublished })}
-                  >
-                    {rec.isPublished ? 'En ligne' : 'Masquée'}
-                  </button>
-                </td>
+                  <td>
+                    <div className="flex items-center gap-1 text-xs font-bold text-amber-700">
+                      <Star size={13} fill="#F59E0B" />
+                      <span>{rec.rating}</span>
+                      <span className="text-slate-500 text-[10px]">({rec.reviewsCount})</span>
+                    </div>
+                  </td>
+
+                  <td>
+                    <button
+                      type="button"
+                      className={`text-xs px-2.5 py-1 rounded-full font-bold transition-all inline-flex items-center gap-1.5 ${
+                        rec.isPublished
+                          ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                          : 'bg-slate-100 text-slate-600 border border-slate-200'
+                      }`}
+                      onClick={() => updateRecommendation(rec.id, { isPublished: !rec.isPublished })}
+                      title="Changer le statut d'affichage"
+                    >
+                      {rec.isPublished && (
+                        <span className="admin-pulse-dot" style={{ width: 6, height: 6 }} />
+                      )}
+                      <span>{rec.isPublished ? 'En ligne' : 'Masquée'}</span>
+                    </button>
+                  </td>
 
                 <td className="text-right">
                   <div className="flex items-center justify-end gap-1.5">
@@ -315,7 +346,8 @@ export const AdminRecommendationsPage: React.FC = () => {
                   </div>
                 </td>
               </tr>
-            ))}
+            ))
+          )}
           </tbody>
         </table>
       </div>
@@ -347,105 +379,178 @@ export const AdminRecommendationsPage: React.FC = () => {
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-6 space-y-4">
-              <div className="admin-form-grid">
-                <div className="admin-form-group">
-                  <label className="admin-form-label">Nom de l'Établissement *</label>
-                  <input
-                    type="text"
-                    className="admin-form-input"
-                    value={name}
-                    onChange={e => setName(e.target.value)}
-                    placeholder="ex. Riad Dar Maya"
-                    required
-                  />
+            <form onSubmit={handleSubmit} className="city-modal__form">
+              <div className="city-modal__grid">
+                <div className="city-modal__inputs-col">
+                  <div className="admin-form-grid">
+                    <div className="admin-form-group">
+                      <label className="admin-form-label">Nom de l'Établissement *</label>
+                      <input
+                        type="text"
+                        className="admin-form-input"
+                        value={name}
+                        onChange={e => setName(e.target.value)}
+                        placeholder="ex. Riad Dar Maya"
+                        required
+                      />
+                    </div>
+
+                    <div className="admin-form-group">
+                      <label className="admin-form-label">Ville de Rattachement *</label>
+                      <select
+                        className="admin-form-select"
+                        value={citySlug}
+                        onChange={e => setCitySlug(e.target.value)}
+                      >
+                        {destinations.map(d => (
+                          <option key={d.slug} value={d.slug}>{d.name}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="admin-form-grid">
+                    <div className="admin-form-group">
+                      <label className="admin-form-label">Catégorie</label>
+                      <select
+                        className="admin-form-select"
+                        value={category}
+                        onChange={e => setCategory(e.target.value as any)}
+                      >
+                        <option value="hotels">Hôtels & Riads</option>
+                        <option value="restaurants">Restaurants</option>
+                        <option value="attractions">Excursions & Activités</option>
+                        <option value="cars">Location de Voitures</option>
+                      </select>
+                    </div>
+
+                    <div className="admin-form-group">
+                      <label className="admin-form-label">Emplacement / Quartier</label>
+                      <input
+                        type="text"
+                        className="admin-form-input"
+                        value={location}
+                        onChange={e => setLocation(e.target.value)}
+                        placeholder="ex. Médina, Guéliz, Corniche..."
+                      />
+                    </div>
+                  </div>
+
+                  <div className="admin-form-grid">
+                    <div className="admin-form-group">
+                      <label className="admin-form-label">Tarif de Départ (MAD)</label>
+                      <input
+                        type="number"
+                        className="admin-form-input"
+                        value={priceStartingFrom}
+                        onChange={e => setPriceStartingFrom(parseInt(e.target.value, 10) || 0)}
+                      />
+                    </div>
+
+                    <div className="admin-form-group">
+                      <label className="admin-form-label">Badge Spécial (Facultatif)</label>
+                      <input
+                        type="text"
+                        className="admin-form-input"
+                        value={badge}
+                        onChange={e => setBadge(e.target.value)}
+                        placeholder="ex. Coup de Cœur, Vue Panoramique"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="admin-form-group">
+                    <label className="admin-form-label">Image d'Illustration (URL)</label>
+                    <input
+                      type="url"
+                      className="admin-form-input"
+                      value={imageUrl}
+                      onChange={e => setImageUrl(e.target.value)}
+                      placeholder="https://images.unsplash.com/..."
+                      required
+                    />
+                  </div>
+
+                  <div className="admin-form-group">
+                    <label className="admin-form-label">Tags et Prestations (séparés par des virgules)</label>
+                    <input
+                      type="text"
+                      className="admin-form-input"
+                      value={tags}
+                      onChange={e => setTags(e.target.value)}
+                      placeholder="ex. Piscine, Spa, Vue mer, Climatisation"
+                    />
+                  </div>
+
+                  <div className="admin-form-group">
+                    <label className="admin-toggle-label">
+                      <input
+                        type="checkbox"
+                        checked={isPublished}
+                        onChange={e => setIsPublished(e.target.checked)}
+                        className="admin-toggle-input"
+                      />
+                      <span className="admin-toggle-slider" />
+                      <span className="admin-toggle-text">
+                        <strong>Publier cette Bonne Adresse</strong>
+                        <small className="block text-xs text-slate-500">Visible immédiatement sur le guide de la ville</small>
+                      </span>
+                    </label>
+                  </div>
                 </div>
 
-                <div className="admin-form-group">
-                  <label className="admin-form-label">Ville de Rattachement *</label>
-                  <select
-                    className="admin-form-select"
-                    value={citySlug}
-                    onChange={e => setCitySlug(e.target.value)}
-                  >
-                    {destinations.map(d => (
-                      <option key={d.slug} value={d.slug}>{d.name}</option>
-                    ))}
-                  </select>
+                {/* Right Live Preview Column */}
+                <div className="city-modal__preview-col">
+                  <div className="city-preview-label">
+                    <span>Aperçu de la Fiche Établissement</span>
+                  </div>
+
+                  <div className="rounded-2xl border border-[#E8E2D9] overflow-hidden bg-white shadow-sm flex flex-col justify-between">
+                    <div className="relative h-36 w-full overflow-hidden">
+                      <img
+                        src={imageUrl || 'https://images.unsplash.com/photo-1548013146-72479768bada?w=800&auto=format&fit=crop&q=80'}
+                        alt={name || 'Aperçu'}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t" />
+
+                      {badge && (
+                        <span className="absolute top-2.5 left-2.5 text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500 text-slate-950 uppercase tracking-wider">
+                          {badge}
+                        </span>
+                      )}
+
+                      <span className="absolute top-2.5 right-2.5 text-[10px] px-2 py-0.5 rounded-full font-bold bg-white/90 text-amber-800 flex items-center gap-1 shadow-sm">
+                        <Star size={10} fill="#F59E0B" /> {rating}
+                      </span>
+                    </div>
+
+                    <div className="p-4 bg-white">
+                      <div className="flex items-center gap-1.5 text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">
+                        {CATEGORY_ICONS[category]}
+                        <span>{CATEGORY_LABELS[category]}</span>
+                      </div>
+                      <h4 className="font-serif text-sm font-bold text-slate-900 leading-snug">
+                        {name || 'Nom de l\'Établissement'}
+                      </h4>
+                      <div className="text-[11px] text-slate-500 flex items-center gap-1 mt-1">
+                        <MapPin size={11} className="text-primary" />
+                        <span>{location || 'Localisation'}, {citySlug}</span>
+                      </div>
+                      <div className="pt-3 mt-3 border-t border-[#E8E2D9] flex items-center justify-between">
+                        <span className="text-xs font-bold text-slate-900">
+                          dès {priceStartingFrom} MAD
+                          <span className="text-[10px] text-slate-500 font-normal"> {category === 'hotels' ? '/nuit' : '/pers'}</span>
+                        </span>
+                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                          isPublished ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-600'
+                        }`}>
+                          {isPublished ? 'En ligne' : 'Masquée'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-
-              <div className="admin-form-grid">
-                <div className="admin-form-group">
-                  <label className="admin-form-label">Catégorie</label>
-                  <select
-                    className="admin-form-select"
-                    value={category}
-                    onChange={e => setCategory(e.target.value as any)}
-                  >
-                    <option value="hotels">Hôtels & Riads</option>
-                    <option value="restaurants">Restaurants</option>
-                    <option value="attractions">Excursions & Activités</option>
-                    <option value="cars">Location de Voitures</option>
-                  </select>
-                </div>
-
-                <div className="admin-form-group">
-                  <label className="admin-form-label">Emplacement / Quartier</label>
-                  <input
-                    type="text"
-                    className="admin-form-input"
-                    value={location}
-                    onChange={e => setLocation(e.target.value)}
-                    placeholder="ex. Médina, Guéliz, Corniche..."
-                  />
-                </div>
-              </div>
-
-              <div className="admin-form-grid">
-                <div className="admin-form-group">
-                  <label className="admin-form-label">Tarif de Départ (MAD)</label>
-                  <input
-                    type="number"
-                    className="admin-form-input"
-                    value={priceStartingFrom}
-                    onChange={e => setPriceStartingFrom(parseInt(e.target.value, 10) || 0)}
-                  />
-                </div>
-
-                <div className="admin-form-group">
-                  <label className="admin-form-label">Badge Spécial (Facultatif)</label>
-                  <input
-                    type="text"
-                    className="admin-form-input"
-                    value={badge}
-                    onChange={e => setBadge(e.target.value)}
-                    placeholder="ex. Coup de Cœur, Vue Panoramique"
-                  />
-                </div>
-              </div>
-
-              <div className="admin-form-group">
-                <label className="admin-form-label">Image d'Illustration (URL)</label>
-                <input
-                  type="url"
-                  className="admin-form-input"
-                  value={imageUrl}
-                  onChange={e => setImageUrl(e.target.value)}
-                  placeholder="https://images.unsplash.com/..."
-                  required
-                />
-              </div>
-
-              <div className="admin-form-group">
-                <label className="admin-form-label">Tags et Prestations (séparés par des virgules)</label>
-                <input
-                  type="text"
-                  className="admin-form-input"
-                  value={tags}
-                  onChange={e => setTags(e.target.value)}
-                  placeholder="ex. Piscine, Spa, Vue mer, Climatisation"
-                />
               </div>
 
               <div className="admin-modal__footer">
@@ -460,7 +565,7 @@ export const AdminRecommendationsPage: React.FC = () => {
                   type="submit"
                   className="admin-btn-primary"
                 >
-                  {editingItem ? 'Enregistrer' : 'Créer l\'Adresse'}
+                  {editingItem ? 'Enregistrer les Modifications' : 'Créer l\'Adresse'}
                 </button>
               </div>
             </form>

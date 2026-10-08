@@ -43,6 +43,24 @@ export const AdminSettingsPage: React.FC = () => {
         </div>
       </div>
 
+      {/* Info Callout */}
+      <div className="admin-cms-callout mb-6">
+        <div className="flex items-center gap-3">
+          <Settings size={22} className="text-primary shrink-0" />
+          <div className="text-xs">
+            <strong className="font-bold">Configuration Globale DLM :</strong> Paramétrez ici les devises de conversion, le mode maintenance et effectuez des sauvegardes instantanées des données de la plateforme.
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="admin-chip admin-chip--emerald">
+            Système opérationnel
+          </span>
+          <span className="admin-chip">
+            Devise active : {currency}
+          </span>
+        </div>
+      </div>
+
       <div className="admin-analytics-grid">
         {/* Platform Settings */}
         <div className="admin-card">

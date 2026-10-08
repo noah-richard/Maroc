@@ -340,3 +340,60 @@
   margin-top: 5px;
   flex-shrink: 0;
 }
+
+@media (max-width: 640px) {
+  .admin-welcome-banner {
+    padding: 18px 16px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .admin-welcome-banner__title {
+    font-size: 1.3rem;
+  }
+
+  .admin-welcome-banner__actions {
+    width: 100%;
+  }
+
+  .admin-welcome-banner__actions button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .admin-action-alert-box {
+    padding: 14px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .admin-alert-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .admin-dest-chart-row {
+    grid-template-columns: 100px 1fr 65px;
+    gap: 8px;
+  }
+
+  .admin-card {
+    padding: 16px 14px;
+    border-radius: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-card {
+    padding: 14px 12px;
+  }
+
+  .admin-dest-chart-row {
+    grid-template-columns: 80px 1fr 55px;
+    font-size: 0.75rem;
+  }
+}
+
+

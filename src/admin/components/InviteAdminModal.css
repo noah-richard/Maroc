@@ -551,3 +551,40 @@
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(200, 80, 61, 0.45);
 }
+
+@media (max-width: 640px) {
+  .admin-modal-backdrop {
+    padding: 10px;
+    align-items: flex-end;
+  }
+
+  .admin-modal {
+    max-height: 94vh;
+    max-height: 94dvh;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .admin-modal__header {
+    padding: 14px 16px;
+  }
+
+  .admin-modal__title {
+    font-size: 1.05rem;
+  }
+
+  .admin-modal__footer {
+    flex-direction: column-reverse;
+    gap: 8px;
+    padding: 14px 16px;
+  }
+
+  .admin-modal__footer button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .admin-roles-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

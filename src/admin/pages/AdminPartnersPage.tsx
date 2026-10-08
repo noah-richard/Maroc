@@ -46,6 +46,24 @@ export const AdminPartnersPage: React.FC = () => {
         </div>
       </div>
 
+      {/* Info Callout */}
+      <div className="admin-cms-callout mb-6">
+        <div className="flex items-center gap-3">
+          <ShieldCheck size={22} className="text-primary shrink-0" />
+          <div className="text-xs">
+            <strong className="font-bold">Charte Hospitalité DLM :</strong> Chaque établissement partenaire fait l'objet d'un audit de conformité juridique (RC, patente touristique) et applique une commission contractuelle directe sur les réservations.
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="admin-chip admin-chip--amber">
+            {pendingCount} à traiter
+          </span>
+          <span className="admin-chip admin-chip--emerald">
+            {approvedCount} certifiés
+          </span>
+        </div>
+      </div>
+
       {/* Filter and Search Bar */}
       <div className="admin-filter-bar">
         <div className="admin-filter-search">
@@ -60,57 +78,46 @@ export const AdminPartnersPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Tabs */}
-      <div className="flex gap-2 border-b border-[#E8E2D9] pb-3">
+      {/* Subnav Tabs */}
+      <div className="admin-subnav-tabs">
         <button
           type="button"
-          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 ${
-            tabFilter === 'pending'
-              ? 'bg-[#C8503D] text-white shadow-sm'
-              : 'bg-white text-[#475569] border border-[#E8E2D9] hover:bg-[#FAF8F5]'
-          }`}
+          className={`admin-subnav-btn ${tabFilter === 'pending' ? 'admin-subnav-btn--active-primary' : ''}`}
           onClick={() => setTabFilter('pending')}
         >
           <span>Dossiers en attente</span>
-          <span className="px-1.5 py-0.5 rounded-full bg-black/10 text-[10px]">
-            {pendingCount}
-          </span>
+          <span className="admin-subnav-badge">{pendingCount}</span>
         </button>
 
         <button
           type="button"
-          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 ${
-            tabFilter === 'approved'
-              ? 'bg-[#10B981] text-white shadow-sm'
-              : 'bg-white text-[#475569] border border-[#E8E2D9] hover:bg-[#FAF8F5]'
-          }`}
+          className={`admin-subnav-btn ${tabFilter === 'approved' ? 'admin-subnav-btn--active-emerald' : ''}`}
           onClick={() => setTabFilter('approved')}
         >
           <span>Établissements Certifiés</span>
-          <span className="px-1.5 py-0.5 rounded-full bg-black/10 text-[10px]">
-            {approvedCount}
-          </span>
+          <span className="admin-subnav-badge">{approvedCount}</span>
         </button>
 
         <button
           type="button"
-          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 ${
-            tabFilter === 'rejected'
-              ? 'bg-red-600 text-white shadow-sm'
-              : 'bg-white text-[#475569] border border-[#E8E2D9] hover:bg-[#FAF8F5]'
-          }`}
+          className={`admin-subnav-btn ${tabFilter === 'rejected' ? 'admin-subnav-btn--active-rose' : ''}`}
           onClick={() => setTabFilter('rejected')}
         >
           <span>Candidatures Refusées</span>
-          <span className="px-1.5 py-0.5 rounded-full bg-black/10 text-[10px]">
-            {rejectedCount}
-          </span>
+          <span className="admin-subnav-badge">{rejectedCount}</span>
         </button>
       </div>
 
       {/* Partners List */}
-      <div className="admin-cards-grid">
-        {filtered.map(partner => (
+      {filtered.length === 0 ? (
+        <div className="admin-empty-state">
+          <Briefcase size={40} className="text-slate-400 mb-3" />
+          <h3 className="font-bold text-base text-[#0F2937]">Aucun dossier de partenaire dans cet onglet</h3>
+          <p className="text-xs text-slate-500 mt-1">Tous les dossiers sont à jour ou aucun résultat ne correspond aux filtres.</p>
+        </div>
+      ) : (
+        <div className="admin-cards-grid">
+          {filtered.map(partner => (
           <div key={partner.id} className="admin-user-card">
             <div className="flex justify-between items-start">
               <div>
@@ -206,7 +213,8 @@ export const AdminPartnersPage: React.FC = () => {
             </div>
           </div>
         ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -30,21 +30,21 @@ export const AdminSecurityPage: React.FC = () => {
       </div>
 
       {/* Security Health Score Banner */}
-      <div className="admin-welcome-banner" style={{ background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.1), rgba(15, 41, 55, 0.8))', borderColor: 'rgba(16, 185, 129, 0.3)' }}>
+      <div className="admin-welcome-banner mb-6">
         <div>
-          <div className="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1 flex items-center gap-2">
-            <ShieldCheck size={16} />
-            <span>Score Global de Sécurité DLM : 96/100 (Excellence)</span>
+          <div className="admin-welcome-banner__badge">
+            <ShieldCheck size={14} className="text-emerald-600" />
+            <span className="text-emerald-700 font-bold">Score Global de Sécurité : 96/100 (Excellence)</span>
           </div>
-          <h2 className="text-xl font-extrabold text-white">
+          <h2 className="admin-welcome-banner__title">
             Politique de Double Authentification Stricte
           </h2>
-          <p className="text-xs text-slate-300 max-w-xl mt-1">
+          <p className="admin-welcome-banner__desc">
             {stats.twoFactorRate}% des comptes administrateurs sont actuellement protégés par un facteur d'authentification matériel ou applicatif (Google Authenticator, YubiKey).
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="admin-welcome-banner__actions">
           <button
             type="button"
             className="admin-btn-primary"

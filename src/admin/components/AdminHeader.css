@@ -315,6 +315,48 @@
   color: #C8503D;
 }
 
+@media (max-width: 768px) {
+  .admin-header {
+    height: 60px;
+    padding: 0 14px;
+  }
+
+  .admin-header__crumb-root,
+  .admin-header__crumb-sep {
+    display: none;
+  }
+
+  .admin-header__crumb-current {
+    font-size: 0.8125rem;
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .admin-header__right {
+    gap: 8px;
+  }
+
+  .admin-header__search-btn {
+    padding: 7px 10px;
+  }
+
+  .admin-header__icon-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .admin-header__user-btn {
+    padding: 4px;
+  }
+
+  .admin-header__dropdown {
+    max-width: calc(100vw - 20px);
+    right: -4px;
+  }
+}
+
 @media (max-width: 640px) {
   .hidden-mobile {
     display: none !important;
@@ -322,5 +364,37 @@
   .admin-header__search-text,
   .admin-header__search-kbd {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-header {
+    padding: 0 10px;
+  }
+
+  .admin-header__left {
+    gap: 8px;
+  }
+
+  .admin-header__crumb-current {
+    max-width: 95px;
+    font-size: 0.75rem;
+  }
+
+  .admin-header__right {
+    gap: 5px;
+  }
+
+  .admin-header__search-btn {
+    padding: 6px 8px;
+  }
+
+  .admin-header__invite-btn {
+    padding: 6px 8px;
+  }
+
+  .admin-header__user-avatar {
+    width: 30px;
+    height: 30px;
   }
 }

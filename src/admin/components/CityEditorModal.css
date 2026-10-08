@@ -257,3 +257,25 @@
   border-color: #F8B4A8;
   color: #7A281A;
 }
+
+@media (max-width: 640px) {
+  .city-modal {
+    max-height: 95vh;
+    max-height: 95dvh;
+    border-radius: 14px;
+  }
+
+  .city-modal__form {
+    padding: 16px 12px;
+    gap: 16px;
+  }
+
+  .city-modal__grid {
+    gap: 16px;
+  }
+
+  .city-preview-card__img {
+    height: 130px;
+  }
+}
+

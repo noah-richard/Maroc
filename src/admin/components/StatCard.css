@@ -124,3 +124,14 @@
 .admin-stat-card__delta-label {
   color: #64748B;
 }
+
+@media (max-width: 640px) {
+  .admin-stat-card {
+    padding: 14px 16px;
+    gap: 8px;
+  }
+  .admin-stat-card__value {
+    font-size: 1.4rem;
+  }
+}
+

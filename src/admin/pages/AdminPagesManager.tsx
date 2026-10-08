@@ -62,6 +62,24 @@ export const AdminPagesManager: React.FC = () => {
         </div>
       </div>
 
+      {/* Info Callout */}
+      <div className="admin-cms-callout">
+        <div className="flex items-center gap-3">
+          <FileText size={22} className="text-primary shrink-0" />
+          <div className="text-xs">
+            <strong className="font-bold">Module Éditorial & Guides :</strong> Chaque page créée ici génère instantanément son URL publique <code className="text-primary font-mono font-bold">/p/[slug]</code> optimisée SEO, avec sommaire interactif et mise en avant dans les recommandations.
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="admin-chip admin-chip--emerald">
+            {pages.filter(p => p.status === 'published').length} en ligne
+          </span>
+          <span className="admin-chip">
+            {pages.length} pages
+          </span>
+        </div>
+      </div>
+
       {/* Filter and Search Bar */}
       <div className="admin-filter-bar">
         <div className="admin-filter-search">
@@ -105,67 +123,80 @@ export const AdminPagesManager: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredPages.map(page => (
-              <tr key={page.id}>
-                <td>
-                  <div className="flex items-center gap-3">
-                    <img
-                      src={page.coverImage}
-                      alt={page.title}
-                      className="w-12 h-9 rounded-lg object-cover border border-amber-900/10 shadow-sm"
-                    />
-                    <div>
-                      <div className="font-bold text-sm" style={{ color: 'var(--admin-text-heading)' }}>
-                        {page.title}
-                      </div>
-                      <div className="text-[11px] text-slate-500 line-clamp-1 max-w-sm mt-0.5">
-                        {page.subtitle}
+            {filteredPages.length === 0 ? (
+              <tr>
+                <td colSpan={7} className="text-center py-12 text-slate-400">
+                  <FileText size={32} className="mx-auto mb-2 text-slate-400" />
+                  <p className="font-semibold text-sm">Aucune page ne correspond à votre recherche.</p>
+                  <p className="text-xs mt-1">Modifiez vos filtres ou créez une nouvelle page.</p>
+                </td>
+              </tr>
+            ) : (
+              filteredPages.map(page => (
+                <tr key={page.id}>
+                  <td>
+                    <div className="flex items-center gap-3">
+                      <img
+                        src={page.coverImage}
+                        alt={page.title}
+                        className="admin-table-thumb w-12 h-9 rounded-lg object-cover border border-amber-900/10 shadow-sm"
+                      />
+                      <div>
+                        <div className="font-bold text-sm" style={{ color: 'var(--admin-text-heading)' }}>
+                          {page.title}
+                        </div>
+                        <div className="text-[11px] text-slate-500 line-clamp-1 max-w-sm mt-0.5">
+                          {page.subtitle}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
+                  </td>
 
-                <td>
-                  <Link
-                    to={`/p/${page.slug}`}
-                    target="_blank"
-                    className="inline-flex items-center gap-1.5 text-xs text-primary font-bold hover:underline"
-                  >
-                    <span>/p/{page.slug}</span>
-                    <ExternalLink size={12} />
-                  </Link>
-                </td>
+                  <td>
+                    <Link
+                      to={`/p/${page.slug}`}
+                      target="_blank"
+                      className="inline-flex items-center gap-1.5 text-xs text-primary font-bold hover:underline"
+                    >
+                      <span>/p/{page.slug}</span>
+                      <ExternalLink size={12} />
+                    </Link>
+                  </td>
 
-                <td>
-                  <span className="admin-chip capitalize">
-                    {page.category}
-                  </span>
-                </td>
+                  <td>
+                    <span className="admin-chip capitalize">
+                      {page.category}
+                    </span>
+                  </td>
 
-                <td>
-                  <span className="text-xs font-medium text-slate-600">{page.author}</span>
-                </td>
+                  <td>
+                    <span className="text-xs font-medium text-slate-600">{page.author}</span>
+                  </td>
 
-                <td>
-                  <div className="flex items-center gap-1 text-xs font-semibold" style={{ color: 'var(--admin-text-heading)' }}>
-                    <Eye size={12} className="text-slate-400" />
-                    <span>{page.views.toLocaleString('fr-FR')}</span>
-                  </div>
-                </td>
+                  <td>
+                    <div className="flex items-center gap-1 text-xs font-semibold" style={{ color: 'var(--admin-text-heading)' }}>
+                      <Eye size={12} className="text-slate-400" />
+                      <span>{page.views.toLocaleString('fr-FR')}</span>
+                    </div>
+                  </td>
 
-                <td>
-                  <button
-                    type="button"
-                    className={`text-xs px-2.5 py-1 rounded-full font-bold transition-all ${
-                      page.status === 'published'
-                        ? 'bg-emerald-500/15 text-emerald-700 border border-emerald-500/30'
-                        : 'bg-slate-100 text-slate-600 border border-slate-200'
-                    }`}
-                    onClick={() => togglePagePublish(page.id)}
-                  >
-                    {page.status === 'published' ? 'Publiée' : 'Brouillon'}
-                  </button>
-                </td>
+                  <td>
+                    <button
+                      type="button"
+                      className={`text-xs px-2.5 py-1 rounded-full font-bold transition-all inline-flex items-center gap-1.5 ${
+                        page.status === 'published'
+                          ? 'bg-emerald-500/15 text-emerald-700 border border-emerald-500/30'
+                          : 'bg-slate-100 text-slate-600 border border-slate-200'
+                      }`}
+                      onClick={() => togglePagePublish(page.id)}
+                      title="Changer le statut de publication"
+                    >
+                      {page.status === 'published' && (
+                        <span className="admin-pulse-dot" style={{ width: 6, height: 6 }} />
+                      )}
+                      <span>{page.status === 'published' ? 'Publiée' : 'Brouillon'}</span>
+                    </button>
+                  </td>
 
 
                 <td className="text-right">
@@ -206,7 +237,8 @@ export const AdminPagesManager: React.FC = () => {
                   </div>
                 </td>
               </tr>
-            ))}
+            ))
+          )}
           </tbody>
         </table>
       </div>
