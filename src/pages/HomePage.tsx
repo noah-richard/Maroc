@@ -1,21 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar/Navbar';
 import { MoroccoHero } from '../components/hero/MoroccoHero';
 import { ClubSection } from '../components/club/ClubSection';
 import { PartnersSection } from '../components/partners/PartnersSection';
 import { Footer } from '../components/layout/Footer/Footer';
-import { AuthModal } from '../components/common/AuthModal/AuthModal';
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
-  const [authModalOpen, setAuthModalOpen] = useState(false);
-  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
-
-  const handleOpenAuth = (mode: 'login' | 'register') => {
-    setAuthMode(mode);
-    setAuthModalOpen(true);
-  };
 
   const handleSelectDestination = (slug: string) => {
     if (slug) {
@@ -31,7 +23,7 @@ export const HomePage: React.FC = () => {
   return (
     <div className="home-page home-page--editorial">
       {/* 01. MINIMAL IMMERSIVE HEADER */}
-      <Navbar variant="minimal" onOpenAuth={handleOpenAuth} />
+      <Navbar variant="minimal" />
 
       {/* 02. MAIN EDITORIAL CONTENT */}
       <main id="main-content">
@@ -49,15 +41,9 @@ export const HomePage: React.FC = () => {
 
       {/* 03. FOOTER */}
       <Footer />
-
-      {/* 04. AUTHENTICATION MODAL */}
-      <AuthModal
-        isOpen={authModalOpen}
-        initialMode={authMode}
-        onClose={() => setAuthModalOpen(false)}
-      />
     </div>
   );
 };
 
 export default HomePage;
+

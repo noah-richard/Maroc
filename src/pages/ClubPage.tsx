@@ -1,29 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Navbar } from '../components/layout/Navbar/Navbar';
 import { Footer } from '../components/layout/Footer/Footer';
-import { AuthModal } from '../components/common/AuthModal/AuthModal';
 import { ClubSection } from '../components/club/ClubSection';
 import { Icon } from '../components/common/Icon/Icon';
 import './ClubPage.css';
 
 export const ClubPage: React.FC = () => {
-  const [authModalOpen, setAuthModalOpen] = useState(false);
-  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
-
   useEffect(() => {
     document.title = 'Le Club DécouvreLeMaroc — Avantages & Privilèges Voyageurs';
     window.scrollTo(0, 0);
   }, []);
 
-  const handleOpenAuth = (mode: 'login' | 'register') => {
-    setAuthMode(mode);
-    setAuthModalOpen(true);
-  };
-
   return (
     <div className="club-page-wrapper">
       {/* 01. NAVIGATION */}
-      <Navbar onOpenAuth={handleOpenAuth} variant="full" />
+      <Navbar variant="full" />
 
       {/* 02. MAIN EDITORIAL CONTENT */}
       <main className="club-page-main">
@@ -105,15 +96,9 @@ export const ClubPage: React.FC = () => {
 
       {/* 03. FOOTER */}
       <Footer />
-
-      {/* 04. AUTH MODAL */}
-      <AuthModal
-        isOpen={authModalOpen}
-        initialMode={authMode}
-        onClose={() => setAuthModalOpen(false)}
-      />
     </div>
   );
 };
+
 
 export default ClubPage;

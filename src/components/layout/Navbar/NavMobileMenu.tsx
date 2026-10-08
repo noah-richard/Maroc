@@ -7,14 +7,12 @@ interface NavMobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   onLinkClick: (e: React.MouseEvent<HTMLAnchorElement>, id: string) => void;
-  onOpenAuth?: (mode: 'login' | 'register') => void;
 }
 
 export const NavMobileMenu: React.FC<NavMobileMenuProps> = ({
   isOpen,
   onClose,
-  onLinkClick,
-  onOpenAuth
+  onLinkClick
 }) => {
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -108,25 +106,9 @@ export const NavMobileMenu: React.FC<NavMobileMenuProps> = ({
               </a>
             </li>
           </ul>
-
-
-          <div className="navbar__mobile-divider" />
-
-          <div className="navbar__mobile-auth">
-            <button
-              type="button"
-              className="navbar__mobile-login-btn"
-              onClick={() => {
-                onClose();
-                onOpenAuth?.('login');
-              }}
-            >
-              <Icon name="user" size={18} />
-              <span>Se connecter / S'inscrire</span>
-            </button>
-          </div>
         </nav>
       </div>
     </>
   );
 };
+

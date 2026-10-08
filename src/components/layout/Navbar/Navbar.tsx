@@ -7,13 +7,11 @@ import { VisitorCounter } from '../../common/VisitorCounter/VisitorCounter';
 import './Navbar.css';
 
 interface NavbarProps {
-  onOpenAuth?: (mode: 'login' | 'register') => void;
   onNavigateSection?: (sectionId: string) => void;
   variant?: 'minimal' | 'full';
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
-  onOpenAuth,
   onNavigateSection,
   variant = 'full'
 }) => {
@@ -71,7 +69,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           isMobileMenuOpen={isMobileMenuOpen}
           onToggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           onLinkClick={handleLinkClick}
-          onOpenAuth={onOpenAuth}
         />
       </div>
 
@@ -80,8 +77,8 @@ export const Navbar: React.FC<NavbarProps> = ({
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
         onLinkClick={handleLinkClick}
-        onOpenAuth={onOpenAuth}
       />
     </header>
   );
 };
+

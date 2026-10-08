@@ -7,15 +7,13 @@ interface NavLinksProps {
   isMobileMenuOpen: boolean;
   onToggleMobileMenu: () => void;
   onLinkClick: (e: React.MouseEvent<HTMLAnchorElement>, id: string) => void;
-  onOpenAuth?: (mode: 'login' | 'register') => void;
 }
 
 export const NavLinks: React.FC<NavLinksProps> = ({
   isMinimal,
   isMobileMenuOpen,
   onToggleMobileMenu,
-  onLinkClick,
-  onOpenAuth
+  onLinkClick
 }) => {
   if (isMinimal) {
     return (
@@ -60,19 +58,6 @@ export const NavLinks: React.FC<NavLinksProps> = ({
           </button>
         </div>
 
-        {/* Login Pill Button */}
-        <button
-          type="button"
-          className="navbar__login-pill"
-          onClick={() => onOpenAuth?.('login')}
-          aria-label="Se connecter à votre compte"
-        >
-          <span className="navbar__login-pill-icon">
-            <Icon name="user" size={17} />
-          </span>
-          <span className="navbar__login-pill-text">Se connecter</span>
-        </button>
-
         {/* Mobile Hamburger */}
         <button
           type="button"
@@ -85,6 +70,7 @@ export const NavLinks: React.FC<NavLinksProps> = ({
         </button>
       </div>
     );
+
   }
 
   return (
@@ -142,18 +128,6 @@ export const NavLinks: React.FC<NavLinksProps> = ({
 
         <button
           type="button"
-          className="navbar__login-pill"
-          onClick={() => onOpenAuth?.('login')}
-          aria-label="Se connecter à votre compte"
-        >
-          <span className="navbar__login-pill-icon">
-            <Icon name="user" size={17} />
-          </span>
-          <span className="navbar__login-pill-text">Se connecter</span>
-        </button>
-
-        <button
-          type="button"
           className="navbar__hamburger"
           aria-label={isMobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
           aria-expanded={isMobileMenuOpen}
@@ -163,5 +137,6 @@ export const NavLinks: React.FC<NavLinksProps> = ({
         </button>
       </div>
     </>
+
   );
 };

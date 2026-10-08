@@ -11,15 +11,12 @@ import { CityFeaturedSection } from '../components/destination/FeaturedSection/C
 import { CityTrustSection } from '../components/destination/TrustSection/CityTrustSection';
 import { DestinationNotFound } from '../components/destination/States/DestinationNotFound';
 import { Footer } from '../components/layout/Footer/Footer';
-import { AuthModal } from '../components/common/AuthModal/AuthModal';
 
 export const DestinationPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const destination = slug ? getDestinationBySlug(slug) : undefined;
 
   // Modals state
-  const [authModalOpen, setAuthModalOpen] = useState(false);
-  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [galleryIndex, setGalleryIndex] = useState(0);
   const [activeCategory, setActiveCategory] = useState<string>('all');
@@ -45,12 +42,6 @@ export const DestinationPage: React.FC = () => {
     }
   }, [destination]);
 
-  // Auth Modal handlers
-  const handleOpenAuth = (mode: 'login' | 'register') => {
-    setAuthMode(mode);
-    setAuthModalOpen(true);
-  };
-
   // Scroll to services / categories
   const handleSelectCategory = (category: 'hotels' | 'restaurants' | 'sites' | 'cars' | 'apartments') => {
     setActiveCategory(category);
@@ -71,22 +62,18 @@ export const DestinationPage: React.FC = () => {
   if (!destination) {
     return (
       <div className="destination-page-not-found-layout">
-        <Navbar onOpenAuth={handleOpenAuth} />
+        <Navbar />
         <DestinationNotFound slug={slug} />
         <Footer />
-        <AuthModal
-          isOpen={authModalOpen}
-          initialMode={authMode}
-          onClose={() => setAuthModalOpen(false)}
-        />
       </div>
     );
   }
 
+
   return (
     <div className="destination-page-wrapper">
       {/* 01. NAVIGATION HEADER */}
-      <Navbar onOpenAuth={handleOpenAuth} />
+      <Navbar />
 
       {/* 02. DESTINATION HERO WITH INTEGRATED BREADCRUMB & WEATHER CARD */}
       <DestinationHero
@@ -145,13 +132,7 @@ export const DestinationPage: React.FC = () => {
 
       {/* 10. GLOBAL FOOTER */}
       <Footer />
-
-      {/* 11. AUTH MODAL */}
-      <AuthModal
-        isOpen={authModalOpen}
-        initialMode={authMode}
-        onClose={() => setAuthModalOpen(false)}
-      />
     </div>
   );
 };
+
